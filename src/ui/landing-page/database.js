@@ -7,6 +7,12 @@ import Box from "@mui/material/Box";
 import MyImageList from "./components/MyImageList";
 import SearchBar from "./components/SearchBar";
 import { Container } from "@mui/material";
+import { useState, useEffect } from "react";
+import data from "./data.json";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import GridViewIcon from "@mui/icons-material/GridView";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -42,6 +48,20 @@ function a11yProps(index) {
 }
 
 export default function Database() {
+  const [searchResults, setSearchResults] = useState(data);
+
+  const handleSearch = (searchTerm) => {
+    if (!searchTerm) {
+      setSearchResults(data);
+    } else {
+      const results = data.filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
+      setSearchResults(results);
+    }
+  };
+
   return (
     <Container>
       <Box
@@ -55,7 +75,36 @@ export default function Database() {
         }}
       >
         <h1>三星堆数据库</h1>
-        <SearchBar />
+        <SearchBar onSearch={handleSearch} />
+        <Box
+          sx={{ display: "flex", justifyContent: "flex-end", width: "100%" }}
+        >
+          <ButtonGroup
+            disableElevation
+            variant="contained"
+            aria-label="Disabled button group"
+          >
+            <Button>
+              <GridViewIcon />
+            </Button>
+            <Button>
+              <FormatListBulletedIcon />
+            </Button>
+          </ButtonGroup>
+        </Box>
+        <Box sx={{ width: "100%" }}>
+          {searchResults.length > 0 ? (
+            searchResults.map((item) => (
+              <Typography key={item.id} variant="h6">
+                {item.name}
+              </Typography>
+            ))
+          ) : (
+            <Typography variant="h6" align="center">
+              No result
+            </Typography>
+          )}
+        </Box>
       </Box>
       <MyImageList />
     </Container>
