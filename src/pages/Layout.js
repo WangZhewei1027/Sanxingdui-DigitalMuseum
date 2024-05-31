@@ -16,6 +16,9 @@ import {
   ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import ExploreIcon from "@mui/icons-material/Explore";
+import StorageOutlinedIcon from "@mui/icons-material/StorageOutlined";
 
 const Layout = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -85,14 +88,21 @@ const Layout = () => {
           onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
         >
-          <Divider />
           <List>
+            <ListItem disablePadding>
+              <ListItemButton sx={{ py: 2 }}>
+                <MenuIcon />
+              </ListItemButton>
+            </ListItem>
+            <Divider variant="middle" sx={{ my: 1 }} />
             <ListItem disablePadding>
               <ListItemButton
                 component={Link}
                 to="/"
                 onClick={() => setTabValue(0)}
+                sx={{ py: 2 }}
               >
+                <HomeIcon sx={{ mr: 2 }} />
                 <ListItemText primary="主页" />
               </ListItemButton>
             </ListItem>
@@ -101,7 +111,9 @@ const Layout = () => {
                 component={Link}
                 to="/explore"
                 onClick={() => setTabValue(1)}
+                sx={{ py: 2 }}
               >
+                <ExploreIcon sx={{ mr: 2 }} />
                 <ListItemText primary="探索" />
               </ListItemButton>
             </ListItem>
@@ -110,14 +122,16 @@ const Layout = () => {
                 component={Link}
                 to="/database"
                 onClick={() => setTabValue(2)}
+                sx={{ py: 2 }}
               >
+                <StorageOutlinedIcon sx={{ mr: 2 }} />
                 <ListItemText primary="数据库" />
               </ListItemButton>
             </ListItem>
           </List>
         </Box>
       </Drawer>
-      <Box sx={{ p: 3 }}>
+      <Box>
         <Outlet />
       </Box>
     </>

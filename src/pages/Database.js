@@ -73,7 +73,6 @@ export default function Database() {
           alignItems: "center",
           justifyContent: "center",
           mx: 32,
-          mt: 4,
         }}
       >
         <h1>三星堆数据库</h1>
