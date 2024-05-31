@@ -15,39 +15,6 @@ import GridViewIcon from "@mui/icons-material/GridView";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import ListView from "./database_ListView";
 
-function CustomTabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-CustomTabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
 export default function Database() {
   const [searchResults, setSearchResults] = useState(data);
   const [currentView, setCurrentView] = useState("Grid");
@@ -72,18 +39,19 @@ export default function Database() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          mx: 32,
+          mx: 3,
         }}
       >
-        <h1>三星堆数据库</h1>
-        <SearchBar onSearch={handleSearch} />
-        <Box
-          sx={{ display: "flex", justifyContent: "flex-end", width: "100%" }}
-        >
+        <Typography variant="h3" gutterBottom>
+          三星堆数据库
+        </Typography>
+        <Box sx={{ display: "flex", flexDirection: "row", width: "70%" }}>
+          <SearchBar onSearch={handleSearch} />
           <ButtonGroup
             disableElevation
             variant="contained"
             aria-label="Disabled button group"
+            sx={{ mx: 2 }}
           >
             <Button onClick={() => setCurrentView("Grid")}>
               <GridViewIcon />

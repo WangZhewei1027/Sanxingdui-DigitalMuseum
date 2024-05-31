@@ -1,13 +1,19 @@
-import * as React from "react";
+// ListView.js
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
-import data from "./assets/data.json";
 import { Box, Container, Typography, Button } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 
-export default function listView({ results }) {
+const ListView = ({ results }) => {
+  const navigate = useNavigate();
+
+  const handleDetailClick = (id) => {
+    navigate(`/detail/${id}`);
+  };
+
   return (
     <Container>
       <Box>
@@ -29,7 +35,12 @@ export default function listView({ results }) {
                   <Typography variant="body2">{item.description}</Typography>
                 </CardContent>
                 <CardActions sx={{ mx: 2 }}>
-                  <Button size="small">详细信息</Button>
+                  <Button
+                    size="small"
+                    onClick={() => handleDetailClick(item.id)}
+                  >
+                    详细信息
+                  </Button>
                 </CardActions>
               </Card>
             ))
@@ -42,4 +53,10 @@ export default function listView({ results }) {
       </Box>
     </Container>
   );
-}
+};
+
+ListView.propTypes = {
+  results: PropTypes.array.isRequired,
+};
+
+export default ListView;

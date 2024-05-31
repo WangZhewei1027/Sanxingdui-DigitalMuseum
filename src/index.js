@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Explore from "./pages/Explore";
 import Database from "./pages/Database";
 import NoPage from "./pages/NoPage";
+import Detail from "./pages/Detail";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="home" element={<Home />} />
           <Route path="explore" element={<Explore />} />
           <Route path="database" element={<Database />} />
+          <Route path="detail/:id" element={<Detail />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

@@ -94,7 +94,7 @@ const Layout = () => {
                 <MenuIcon />
               </ListItemButton>
             </ListItem>
-            <Divider variant="middle" sx={{ my: 1 }} />
+            <Divider variant="middle" sx={{ my: 0.1 }} />
             <ListItem disablePadding>
               <ListItemButton
                 component={Link}
