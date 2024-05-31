@@ -13,6 +13,7 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import GridViewIcon from "@mui/icons-material/GridView";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import ListView from "./database_ListView";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,6 +50,7 @@ function a11yProps(index) {
 
 export default function Database() {
   const [searchResults, setSearchResults] = useState(data);
+  const [currentView, setCurrentView] = useState("Grid");
 
   const handleSearch = (searchTerm) => {
     if (!searchTerm) {
@@ -84,29 +86,25 @@ export default function Database() {
             variant="contained"
             aria-label="Disabled button group"
           >
-            <Button>
+            <Button onClick={() => setCurrentView("Grid")}>
               <GridViewIcon />
             </Button>
-            <Button>
+            <Button onClick={() => setCurrentView("List")}>
               <FormatListBulletedIcon />
             </Button>
           </ButtonGroup>
         </Box>
-        <Box sx={{ width: "100%" }}>
-          {searchResults.length > 0 ? (
-            searchResults.map((item) => (
-              <Typography key={item.id} variant="h6">
-                {item.name}
-              </Typography>
-            ))
-          ) : (
-            <Typography variant="h6" align="center">
-              No result
-            </Typography>
-          )}
-        </Box>
       </Box>
-      <MyImageList />
+      {currentView === "Grid" && (
+        <div>
+          <MyImageList />
+        </div>
+      )}
+      {currentView === "List" && (
+        <div>
+          <ListView results={searchResults} />
+        </div>
+      )}
     </Container>
   );
 }
