@@ -4,8 +4,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import MyImageList from "./components/MyImageList";
-import SearchBar from "./components/SearchBar";
+import MyImageList from "../../pages/components/MyImageList";
+import SearchBar from "../../pages/components/SearchBar";
 import { Container } from "@mui/material";
 import { useState, useEffect } from "react";
 import data from "./data.json";
@@ -13,7 +13,7 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import GridViewIcon from "@mui/icons-material/GridView";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import ListView from "./database_ListView";
+import ListView from "../../pages/database_ListView";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
