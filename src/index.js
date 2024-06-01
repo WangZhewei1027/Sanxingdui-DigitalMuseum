@@ -12,12 +12,21 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/Sanxingdui-DigitalMuseum" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="home" element={<Home />} />
-          <Route path="explore" element={<Explore />} />
-          <Route path="database" element={<Database />} />
-          <Route path="detail/:id" element={<Detail />} />
+          <Route path="/Sanxingdui-DigitalMuseum/home" element={<Home />} />
+          <Route
+            path="/Sanxingdui-DigitalMuseum/explore"
+            element={<Explore />}
+          />
+          <Route
+            path="/Sanxingdui-DigitalMuseum/database"
+            element={<Database />}
+          />
+          <Route
+            path="/Sanxingdui-DigitalMuseum/detail/:id"
+            element={<Detail />}
+          />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
