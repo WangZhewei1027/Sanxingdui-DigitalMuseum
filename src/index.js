@@ -27,7 +27,7 @@ export default function App() {
             path="/Sanxingdui-DigitalMuseum/detail/:id"
             element={<Detail />}
           />
-          <Route path="*" element={<NoPage />} />
+          <Route path="/Sanxingdui-DigitalMuseum/*" element={<NoPage />} />
         </Route>
       </Routes>
     </Router>
