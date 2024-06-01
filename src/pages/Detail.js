@@ -30,7 +30,7 @@ const Detail = () => {
                 />
               </Card>
             </Box>
-            <Box sx={{ spacing: 2, mx: 2 }}>
+            <Box sx={{ spacing: 2, mx: 3 }}>
               <Card sx={{ mb: 2 }}>
                 <CardContent>
                   <Typography component="div" variant="h5">
