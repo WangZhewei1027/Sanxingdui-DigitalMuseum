@@ -71,7 +71,13 @@ const Layout = () => {
 
   return (
     <>
-      <AppBar position="fixed">
+      <AppBar
+        position="fixed"
+        sx={{
+          backdropFilter: "blur(10px)",
+          backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent black
+        }}
+      >
         <Toolbar>
           <IconButton
             edge="start"
