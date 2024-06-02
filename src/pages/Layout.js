@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -24,6 +24,23 @@ const Layout = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [tabValue, setTabValue] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/home":
+        setTabValue(0);
+        break;
+      case "/explore":
+        setTabValue(1);
+        break;
+      case "/database":
+        setTabValue(2);
+        break;
+      default:
+        setTabValue(0);
+    }
+  }, [location.pathname]);
 
   const toggleDrawer = (open) => (event) => {
     if (
