@@ -13,6 +13,10 @@ import {
   RouterProvider,
   HashRouter,
 } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import theme from "./theme";
+import GlobalStyles from "@mui/material/GlobalStyles";
+import { CssBaseline } from "@mui/material";
 
 const router = createHashRouter([
   {
@@ -47,8 +51,24 @@ const router = createHashRouter([
   },
 ]);
 
+const globalStyles = (
+  <GlobalStyles
+    styles={{
+      body: {
+        backgroundColor: theme.palette.background.default,
+      },
+    }}
+  />
+);
+
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {globalStyles}
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

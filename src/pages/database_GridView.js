@@ -16,7 +16,7 @@ export default function MyImageList({ results }) {
   return (
     <Box sx={{ overflowY: "scroll", height: "100%" }}>
       {results.length > 0 ? (
-        <ImageList variant="masonry" cols={5} gap={8}>
+        <ImageList variant="masonry" cols={5} gap={20}>
           {results.map((item) => (
             <ImageListItem
               key={item.img}
