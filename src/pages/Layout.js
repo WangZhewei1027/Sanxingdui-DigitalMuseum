@@ -39,13 +39,13 @@ const Layout = () => {
     setTabValue(newValue);
     switch (newValue) {
       case 0:
-        navigate("/Sanxingdui-DigitalMuseum");
+        navigate("/home");
         break;
       case 1:
-        navigate("/Sanxingdui-DigitalMuseum/explore");
+        navigate("/explore");
         break;
       case 2:
-        navigate("/Sanxingdui-DigitalMuseum/database");
+        navigate("/database");
         break;
       default:
         break;

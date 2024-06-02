@@ -7,27 +7,32 @@ import Explore from "./pages/Explore";
 import Database from "./pages/Database";
 import NoPage from "./pages/NoPage";
 import Detail from "./pages/Detail";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createHashRouter,
+  RouterProvider,
+  HashRouter,
+} from "react-router-dom";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: "/Sanxingdui-DigitalMuseum",
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path: "/Sanxingdui-DigitalMuseum",
+        path: "/",
         element: <Home />,
       },
       {
-        path: "/Sanxingdui-DigitalMuseum/home",
+        path: "/home",
         element: <Home />,
       },
       {
-        path: "/Sanxingdui-DigitalMuseum/explore",
+        path: "/explore",
         element: <Explore />,
       },
       {
-        path: "/Sanxingdui-DigitalMuseum/database",
+        path: "/database",
         element: <Database />,
       },
     ],
