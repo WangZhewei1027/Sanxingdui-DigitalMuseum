@@ -14,6 +14,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import GridViewIcon from "@mui/icons-material/GridView";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import ListView from "./database_ListView";
+import GridView from "./database_GridView";
 
 export default function Database() {
   const [searchResults, setSearchResults] = useState(data);
@@ -63,14 +64,14 @@ export default function Database() {
         </Box>
       </Box>
       {currentView === "Grid" && (
-        <div>
-          <MyImageList />
-        </div>
+        <>
+          <GridView results={searchResults} />
+        </>
       )}
       {currentView === "List" && (
-        <div>
+        <>
           <ListView results={searchResults} />
-        </div>
+        </>
       )}
     </Container>
   );

@@ -20,7 +20,13 @@ const ListView = ({ results }) => {
         <Box sx={{ width: "100%" }}>
           {results.length > 0 ? (
             results.map((item) => (
-              <Card key={item.id} variant="outlined" sx={{ my: 2 }}>
+              <Card
+                key={item.id}
+                onClick={() => handleDetailClick(item.id)}
+                style={{ cursor: "pointer" }}
+                variant="outlined"
+                sx={{ my: 2 }}
+              >
                 <CardContent sx={{ m: 2 }}>
                   <Typography
                     sx={{ fontSize: 20 }}
@@ -34,14 +40,6 @@ const ListView = ({ results }) => {
                   </Typography>
                   <Typography variant="body2">{item.description}</Typography>
                 </CardContent>
-                <CardActions sx={{ mx: 2 }}>
-                  <Button
-                    size="small"
-                    onClick={() => handleDetailClick(item.id)}
-                  >
-                    详细信息
-                  </Button>
-                </CardActions>
               </Card>
             ))
           ) : (
