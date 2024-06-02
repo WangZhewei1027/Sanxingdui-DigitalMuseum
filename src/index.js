@@ -36,6 +36,10 @@ const router = createHashRouter([
         element: <Database />,
       },
       {
+        path: "/database/:id",
+        element: <Detail />,
+      },
+      {
         path: "*",
         element: <NoPage />,
       },

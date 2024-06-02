@@ -11,7 +11,7 @@ const ListView = ({ results }) => {
   const navigate = useNavigate();
 
   const handleDetailClick = (id) => {
-    navigate(`/Sanxingdui-DigitalMuseum/detail/${id}`);
+    navigate(`/database/${id}`);
   };
 
   return (
