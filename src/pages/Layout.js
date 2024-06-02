@@ -98,7 +98,7 @@ const Layout = () => {
             <ListItem disablePadding>
               <ListItemButton
                 component={Link}
-                to="/Sanxingdui-DigitalMuseum"
+                to="/home"
                 onClick={() => setTabValue(0)}
                 sx={{ py: 2 }}
               >
@@ -109,7 +109,7 @@ const Layout = () => {
             <ListItem disablePadding>
               <ListItemButton
                 component={Link}
-                to="/Sanxingdui-DigitalMuseum/explore"
+                to="/explore"
                 onClick={() => setTabValue(1)}
                 sx={{ py: 2 }}
               >
@@ -120,7 +120,7 @@ const Layout = () => {
             <ListItem disablePadding>
               <ListItemButton
                 component={Link}
-                to="/Sanxingdui-DigitalMuseum/database"
+                to="/database"
                 onClick={() => setTabValue(2)}
                 sx={{ py: 2 }}
               >

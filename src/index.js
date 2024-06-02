@@ -35,35 +35,16 @@ const router = createHashRouter([
         path: "/database",
         element: <Database />,
       },
+      {
+        path: "*",
+        element: <NoPage />,
+      },
     ],
   },
 ]);
 
 export default function App() {
-  return (
-    // <Router>
-    //   <Routes>
-    //     <Route path="/Sanxingdui-DigitalMuseum" element={<Layout />}>
-    //       <Route index element={<Home />} />
-    //       <Route path="/Sanxingdui-DigitalMuseum/home" element={<Home />} />
-    //       <Route
-    //         path="/Sanxingdui-DigitalMuseum/explore"
-    //         element={<Explore />}
-    //       />
-    //       <Route
-    //         path="/Sanxingdui-DigitalMuseum/database"
-    //         element={<Database />}
-    //       />
-    //       <Route
-    //         path="/Sanxingdui-DigitalMuseum/detail/:id"
-    //         element={<Detail />}
-    //       />
-    //       <Route path="/Sanxingdui-DigitalMuseum/*" element={<NoPage />} />
-    //     </Route>
-    //   </Routes>
-    // </Router>
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
