@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/Sanxingdui-DigitalMuseum/static/js/main.b2a67a72.js",
+    "main.js": "/Sanxingdui-DigitalMuseum/static/js/main.25b75a02.js",
     "index.html": "/Sanxingdui-DigitalMuseum/index.html",
-    "main.b2a67a72.js.map": "/Sanxingdui-DigitalMuseum/static/js/main.b2a67a72.js.map"
+    "main.25b75a02.js.map": "/Sanxingdui-DigitalMuseum/static/js/main.25b75a02.js.map"
   },
   "entrypoints": [
-    "static/js/main.b2a67a72.js"
+    "static/js/main.25b75a02.js"
   ]
 }
