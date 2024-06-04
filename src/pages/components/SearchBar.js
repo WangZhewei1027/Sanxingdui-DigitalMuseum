@@ -4,7 +4,7 @@ import { Autocomplete, TextField, Chip, Box, Typography } from "@mui/material";
 const SearchBar = ({ onSearch, data }) => {
   const [selectedTags, setSelectedTags] = useState([]);
 
-  const tags = ["玉石器", "铜器", "金器", "石器", "金银器"];
+  const tags = ["玉石器", "铜器", "石器", "金银器"];
 
   // Combine item names and tags
   const combinedOptions = [

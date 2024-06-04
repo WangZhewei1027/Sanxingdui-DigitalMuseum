@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
@@ -8,9 +8,18 @@ import { useNavigate } from "react-router-dom";
 
 export default function MyImageList({ results }) {
   const navigate = useNavigate();
+  const [hoveredItem, setHoveredItem] = useState(null);
 
   const handleImageClick = (id) => {
     navigate(`/database/${id}`);
+  };
+
+  const handleMouseEnter = (id) => {
+    setHoveredItem(id);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredItem(null);
   };
 
   return (
@@ -21,10 +30,16 @@ export default function MyImageList({ results }) {
             <ImageListItem
               key={item.img}
               onClick={() => handleImageClick(item.id)}
+              onMouseEnter={() => handleMouseEnter(item.id)}
+              onMouseLeave={handleMouseLeave}
               style={{ cursor: "pointer" }}
             >
               <img
-                src={`${item.img}?w=248&fit=crop&auto=format`}
+                src={
+                  hoveredItem === item.id
+                    ? require(`./assets/pics_nobg/${item.id}.png`)
+                    : require(`./assets/pics/${item.id}.jpeg`)
+                }
                 alt={item.title}
                 loading="lazy"
               />

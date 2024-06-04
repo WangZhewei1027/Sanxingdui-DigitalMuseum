@@ -18,8 +18,10 @@ export default function Database() {
     } else {
       console.log(searchTerms);
       const results = data.filter((item) =>
-        searchTerms.some((term) =>
-          item.name.toLowerCase().includes(term.toLowerCase())
+        searchTerms.some(
+          (term) =>
+            item.name.toLowerCase().includes(term.toLowerCase()) ||
+            item.material.toLowerCase().includes(term.toLowerCase())
         )
       );
 
