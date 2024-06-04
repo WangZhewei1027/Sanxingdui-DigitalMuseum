@@ -27,18 +27,22 @@ const Layout = () => {
   const location = useLocation();
 
   useEffect(() => {
-    switch (location.pathname) {
-      case "/home":
-        setTabValue(0);
-        break;
-      case "/explore":
-        setTabValue(1);
-        break;
-      case "/database":
-        setTabValue(2);
-        break;
-      default:
-        setTabValue(0);
+    if (location.pathname.startsWith("/database/")) {
+      setTabValue(2);
+    } else {
+      switch (location.pathname) {
+        case "/home":
+          setTabValue(0);
+          break;
+        case "/explore":
+          setTabValue(1);
+          break;
+        case "/database":
+          setTabValue(2);
+          break;
+        default:
+          setTabValue(0);
+      }
     }
   }, [location.pathname]);
 

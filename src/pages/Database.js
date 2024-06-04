@@ -1,31 +1,26 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import MyImageList from "./components/MyImageList";
-import SearchBar from "./components/SearchBar";
-import { Container } from "@mui/material";
-import { useState, useEffect } from "react";
-import data from "./assets/data.json";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
+import { useState } from "react";
+import { Container, Box, Typography, Button, ButtonGroup } from "@mui/material";
 import GridViewIcon from "@mui/icons-material/GridView";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import ListView from "./database_ListView";
 import GridView from "./database_GridView";
+import SearchBar from "./components/SearchBar";
+import data from "./assets/data.json";
 
 export default function Database() {
   const [searchResults, setSearchResults] = useState(data);
   const [currentView, setCurrentView] = useState("Grid");
 
-  const handleSearch = (searchTerm) => {
-    if (!searchTerm) {
+  const handleSearch = (searchTerms) => {
+    if (searchTerms.length === 0) {
       setSearchResults(data);
     } else {
+      console.log(searchTerms);
       const results = data.filter((item) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+        searchTerms.some((term) =>
+          item.name.toLowerCase().includes(term.toLowerCase())
+        )
       );
 
       setSearchResults(results);
@@ -46,13 +41,22 @@ export default function Database() {
         <Typography variant="h3" gutterBottom>
           三星堆数据库
         </Typography>
-        <Box sx={{ display: "flex", flexDirection: "row", width: "70%" }}>
-          <SearchBar onSearch={handleSearch} />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            width: "70%",
+            padding: 1,
+          }}
+        >
+          <Box sx={{ flexGrow: 1, paddingRight: 8 }}>
+            <SearchBar onSearch={handleSearch} data={data} />
+          </Box>
           <ButtonGroup
             disableElevation
             variant="contained"
             aria-label="Disabled button group"
-            sx={{ mx: 2 }}
+            sx={{ ml: 2 }}
           >
             <Button onClick={() => setCurrentView("Grid")}>
               <GridViewIcon />

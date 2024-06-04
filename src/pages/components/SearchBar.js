@@ -1,43 +1,82 @@
 import React, { useState } from "react";
-import { TextField, InputAdornment, IconButton } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import { Autocomplete, TextField, Chip, Box, Typography } from "@mui/material";
 
-const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+const SearchBar = ({ onSearch, data }) => {
+  const [selectedTags, setSelectedTags] = useState([]);
 
-  const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
+  const tags = ["玉石器", "铜器", "金器", "石器", "金银器"];
+
+  // Combine item names and tags
+  const combinedOptions = [
+    ...tags.map((tag) => ({ type: "tag", label: tag })),
+    ...data.map((item) => ({ type: "item", label: item.name })),
+  ];
+
+  const getFilteredOptions = (combinedOptions, selectedTags) => {
+    return combinedOptions.filter((option) => {
+      // Exclude options that are tags and are present in the selectedTags array
+      return !selectedTags.includes(option.label);
+    });
   };
 
-  const handleSearch = () => {
-    if (onSearch) {
-      onSearch(searchTerm);
-    }
-  };
+  const handleInputChange = (event, value) => {
+    const selectedTags = value.map((v) => (v.label ? v.label : v));
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      handleSearch();
-    }
+    setSelectedTags(selectedTags); // update selected tags state
+    onSearch(selectedTags); // call the onSearch function
   };
 
   return (
-    <TextField
-      variant="outlined"
-      placeholder="Search..."
-      value={searchTerm}
-      onChange={handleInputChange}
-      onKeyDown={handleKeyDown}
-      fullWidth
-      InputProps={{
-        endAdornment: (
-          <InputAdornment position="end">
-            <IconButton onClick={handleSearch}>
-              <SearchIcon />
-            </IconButton>
-          </InputAdornment>
-        ),
+    <Autocomplete
+      multiple
+      options={getFilteredOptions(combinedOptions, selectedTags)} // use the filtered options here
+      freeSolo
+      getOptionLabel={(option) => (option.label ? option.label : option)}
+      filterOptions={(options, state) => {
+        return options.filter((option) =>
+          option.label.toLowerCase().includes(state.inputValue.toLowerCase())
+        );
       }}
+      onChange={(event, value) => handleInputChange(event, value)}
+      renderTags={(value, getTagProps) =>
+        value.map((option, index) => {
+          const { key, ...tagProps } = getTagProps({ index }); // Destructure key and other props
+          return (
+            <Chip
+              key={option.label ? option.label : option} // Ensure key is passed directly here
+              variant="outlined"
+              label={option.label ? option.label : option}
+              {...tagProps}
+              sx={option.type === "tag" ? { backgroundColor: "#f0f0f0" } : {}}
+            />
+          );
+        })
+      }
+      renderOption={(props, option) => {
+        const { key, ...optionProps } = props; // Destructure key and other props
+        return (
+          <Box
+            component="li"
+            key={option.label} // Ensure key is passed directly here
+            {...optionProps}
+            sx={{ display: "flex", alignItems: "center" }}
+          >
+            {option.type === "tag" && (
+              <Chip label="Tag" size="small" sx={{ mr: 4 }} />
+            )}
+            <Typography variant="body1">{option.label}</Typography>
+          </Box>
+        );
+      }}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          variant="outlined"
+          label="Search artifacts"
+          fullWidth
+        />
+      )}
+      sx={{ width: "100%" }} // Set the width to 100%
     />
   );
 };
