@@ -5,10 +5,14 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import { useTheme, useMediaQuery } from "@mui/material";
 
 export default function MyImageList({ results }) {
   const navigate = useNavigate();
   const [hoveredItem, setHoveredItem] = useState(null);
+
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
   const handleImageClick = (id) => {
     navigate(`/database/${id}`);
@@ -25,7 +29,7 @@ export default function MyImageList({ results }) {
   return (
     <Box sx={{ overflowY: "scroll", height: "100%" }}>
       {results.length > 0 ? (
-        <ImageList variant="masonry" cols={5} gap={20}>
+        <ImageList variant="masonry" cols={isMdUp ? 5 : 2} gap={20}>
           {results.map((item) => (
             <ImageListItem
               key={item.img}

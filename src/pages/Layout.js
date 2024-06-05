@@ -19,6 +19,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import ExploreIcon from "@mui/icons-material/Explore";
 import StorageOutlinedIcon from "@mui/icons-material/StorageOutlined";
+import { Height } from "@mui/icons-material";
 
 const Layout = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -91,9 +92,13 @@ const Layout = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" sx={{ mx: 2 }}>
-            三星堆数字博物馆
-          </Typography>
+
+          <img
+            src="https://industry.map.qq.com/cloud/sanxingdui/pc/home/header-logo.png?imageMogr2/format/webp/ignore-error/1"
+            alt="Logo"
+            style={{ maxHeight: "40px", width: "auto" }}
+          />
+
           <Tabs
             value={tabValue}
             onChange={handleTabChange}
@@ -117,17 +122,17 @@ const Layout = () => {
         >
           <List>
             <ListItem disablePadding>
-              <ListItemButton sx={{ py: 2 }}>
+              <ListItemButton sx={{ height: 60 }}>
                 <MenuIcon />
               </ListItemButton>
             </ListItem>
-            <Divider variant="middle" sx={{ my: 0.1 }} />
+            <Divider variant="middle" />
             <ListItem disablePadding>
               <ListItemButton
                 component={Link}
                 to="/home"
                 onClick={() => setTabValue(0)}
-                sx={{ py: 2 }}
+                sx={{ height: 60 }}
               >
                 <HomeIcon sx={{ mr: 2 }} />
                 <ListItemText primary="主页" />
@@ -138,7 +143,7 @@ const Layout = () => {
                 component={Link}
                 to="/explore"
                 onClick={() => setTabValue(1)}
-                sx={{ py: 2 }}
+                sx={{ height: 60 }}
               >
                 <ExploreIcon sx={{ mr: 2 }} />
                 <ListItemText primary="探索" />
@@ -149,10 +154,20 @@ const Layout = () => {
                 component={Link}
                 to="/database"
                 onClick={() => setTabValue(2)}
-                sx={{ py: 2 }}
+                sx={{ height: 60 }}
               >
-                <StorageOutlinedIcon sx={{ mr: 2 }} />
-                <ListItemText primary="数据库" />
+                <Box
+                  sx={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: { md: "center" },
+                    columnGap: 12,
+                  }}
+                >
+                  <StorageOutlinedIcon />
+                  <Typography>数据库</Typography>
+                </Box>
               </ListItemButton>
             </ListItem>
           </List>
