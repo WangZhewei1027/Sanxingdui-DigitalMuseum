@@ -16,9 +16,9 @@ import {
   ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import HomeIcon from "@mui/icons-material/Home";
-import ExploreIcon from "@mui/icons-material/Explore";
-import StorageOutlinedIcon from "@mui/icons-material/StorageOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
+import DatasetOutlinedIcon from "@mui/icons-material/DatasetOutlined";
 import { Height } from "@mui/icons-material";
 
 const Layout = () => {
@@ -83,7 +83,7 @@ const Layout = () => {
           backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent black
         }}
       >
-        <Toolbar>
+        <Toolbar overflow={"auto"}>
           <IconButton
             edge="start"
             color="inherit"
@@ -92,12 +92,17 @@ const Layout = () => {
           >
             <MenuIcon />
           </IconButton>
-
-          <img
-            src="https://industry.map.qq.com/cloud/sanxingdui/pc/home/header-logo.png?imageMogr2/format/webp/ignore-error/1"
-            alt="Logo"
-            style={{ maxHeight: "40px", width: "auto" }}
-          />
+          <Box
+            display="flex"
+            justifyContent="center"
+            sx={{ marginLeft: 20, marginRight: 20 }}
+          >
+            <img
+              src="https://industry.map.qq.com/cloud/sanxingdui/pc/home/header-logo.png?imageMogr2/format/webp/ignore-error/1"
+              alt="Logo"
+              style={{ maxHeight: "40px", width: "auto" }}
+            />
+          </Box>
 
           <Tabs
             value={tabValue}
@@ -134,7 +139,7 @@ const Layout = () => {
                 onClick={() => setTabValue(0)}
                 sx={{ height: 60 }}
               >
-                <HomeIcon sx={{ mr: 2 }} />
+                <HomeOutlinedIcon sx={{ marginRight: 5 }} />
                 <ListItemText primary="主页" />
               </ListItemButton>
             </ListItem>
@@ -145,7 +150,7 @@ const Layout = () => {
                 onClick={() => setTabValue(1)}
                 sx={{ height: 60 }}
               >
-                <ExploreIcon sx={{ mr: 2 }} />
+                <ExploreOutlinedIcon sx={{ marginRight: 5 }} />
                 <ListItemText primary="探索" />
               </ListItemButton>
             </ListItem>
@@ -156,18 +161,8 @@ const Layout = () => {
                 onClick={() => setTabValue(2)}
                 sx={{ height: 60 }}
               >
-                <Box
-                  sx={{
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: { md: "center" },
-                    columnGap: 12,
-                  }}
-                >
-                  <StorageOutlinedIcon />
-                  <Typography>数据库</Typography>
-                </Box>
+                <DatasetOutlinedIcon sx={{ marginRight: 5 }} />
+                <Typography>数据库</Typography>
               </ListItemButton>
             </ListItem>
           </List>

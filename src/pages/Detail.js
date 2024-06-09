@@ -24,7 +24,7 @@ const Detail = () => {
                 <CardMedia
                   component="img"
                   sx={{ width: "100%" }}
-                  image={`${item.img}?w=248&fit=crop&auto=format`}
+                  src={require(`./assets/pics/${item.id}.jpeg`)}
                   alt={item.name}
                 />
               </Card>
