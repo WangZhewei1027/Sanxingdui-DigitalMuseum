@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 const Home = () => {
   return (
@@ -17,6 +17,7 @@ const Home = () => {
       <Box>
         <h1>Home</h1>
       </Box>
+      <Button>Button</Button>
     </Box>
   );
 };

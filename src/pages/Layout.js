@@ -19,13 +19,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import DatasetOutlinedIcon from "@mui/icons-material/DatasetOutlined";
-import { Height } from "@mui/icons-material";
+import { useTheme, useMediaQuery } from "@mui/material";
 
 const Layout = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [tabValue, setTabValue] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
   useEffect(() => {
     if (location.pathname.startsWith("/database/")) {
@@ -95,7 +97,7 @@ const Layout = () => {
           <Box
             display="flex"
             justifyContent="center"
-            sx={{ marginLeft: 20, marginRight: 20 }}
+            sx={{ marginLeft: 2, marginRight: 2 }}
           >
             <img
               src="https://industry.map.qq.com/cloud/sanxingdui/pc/home/header-logo.png?imageMogr2/format/webp/ignore-error/1"
@@ -103,20 +105,16 @@ const Layout = () => {
               style={{ maxHeight: "40px", width: "auto" }}
             />
           </Box>
-
-          <Tabs
-            value={tabValue}
-            onChange={handleTabChange}
-            textColor="inherit"
-            indicatorColor="secondary"
-          >
-            <Tab label="主页" />
-            <Tab label="探索" />
-            <Tab label="数据库" />
-          </Tabs>
+          {isMdUp && (
+            <Tabs value={tabValue} onChange={handleTabChange}>
+              <Tab label="主页" />
+              <Tab label="探索" />
+              <Tab label="数据库" />
+            </Tabs>
+          )}
         </Toolbar>
       </AppBar>
-      <Toolbar />{" "}
+      <Toolbar sx={{ marginTop: 3 }} />
       {/* This ensures content is not hidden under the fixed AppBar */}
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         <Box
@@ -139,7 +137,7 @@ const Layout = () => {
                 onClick={() => setTabValue(0)}
                 sx={{ height: 60 }}
               >
-                <HomeOutlinedIcon sx={{ marginRight: 5 }} />
+                <HomeOutlinedIcon sx={{ marginRight: 3 }} />
                 <ListItemText primary="主页" />
               </ListItemButton>
             </ListItem>
@@ -150,7 +148,7 @@ const Layout = () => {
                 onClick={() => setTabValue(1)}
                 sx={{ height: 60 }}
               >
-                <ExploreOutlinedIcon sx={{ marginRight: 5 }} />
+                <ExploreOutlinedIcon sx={{ marginRight: 3 }} />
                 <ListItemText primary="探索" />
               </ListItemButton>
             </ListItem>
@@ -161,7 +159,7 @@ const Layout = () => {
                 onClick={() => setTabValue(2)}
                 sx={{ height: 60 }}
               >
-                <DatasetOutlinedIcon sx={{ marginRight: 5 }} />
+                <DatasetOutlinedIcon sx={{ marginRight: 3 }} />
                 <Typography>数据库</Typography>
               </ListItemButton>
             </ListItem>

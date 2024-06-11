@@ -51,12 +51,11 @@ export default function Database() {
             padding: 1,
           }}
         >
-          <Box sx={{ flexGrow: 1, paddingRight: 8 }}>
+          <Box sx={{ flexGrow: 1 }}>
             <SearchBar onSearch={handleSearch} data={data} />
           </Box>
           <ButtonGroup
             disableElevation
-            variant="contained"
             aria-label="Disabled button group"
             sx={{ ml: 2 }}
           >

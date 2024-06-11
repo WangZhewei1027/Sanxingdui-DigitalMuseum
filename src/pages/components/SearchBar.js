@@ -47,7 +47,11 @@ const SearchBar = ({ onSearch, data }) => {
               variant="outlined"
               label={option.label ? option.label : option}
               {...tagProps}
-              sx={option.type === "tag" ? { backgroundColor: "#f0f0f0" } : {}}
+              sx={
+                option.type === "tag"
+                  ? { backgroundColor: "rgba(51,51,51)" }
+                  : {}
+              }
             />
           );
         })
@@ -62,19 +66,14 @@ const SearchBar = ({ onSearch, data }) => {
             sx={{ display: "flex", alignItems: "center" }}
           >
             {option.type === "tag" && (
-              <Chip label="Tag" size="small" sx={{ mr: 4 }} />
+              <Chip label="Tag" size="small" sx={{ mr: 1 }} />
             )}
             <Typography variant="body1">{option.label}</Typography>
           </Box>
         );
       }}
       renderInput={(params) => (
-        <TextField
-          {...params}
-          variant="outlined"
-          label="Search artifacts"
-          fullWidth
-        />
+        <TextField {...params} variant="outlined" label="搜索藏品" fullWidth />
       )}
       sx={{ width: "100%" }} // Set the width to 100%
     />

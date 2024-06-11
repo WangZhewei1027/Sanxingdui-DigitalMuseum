@@ -6,6 +6,7 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
+import Skeleton from "@mui/material/Skeleton";
 
 export default function MyImageList({ results }) {
   const navigate = useNavigate();
