@@ -137,7 +137,7 @@ const Layout = () => {
                 onClick={() => setTabValue(0)}
                 sx={{ height: 60 }}
               >
-                <HomeOutlinedIcon sx={{ marginRight: 3 }} />
+                <HomeOutlinedIcon sx={{ marginRight: 1 }} />
                 <ListItemText primary="主页" />
               </ListItemButton>
             </ListItem>
@@ -148,7 +148,7 @@ const Layout = () => {
                 onClick={() => setTabValue(1)}
                 sx={{ height: 60 }}
               >
-                <ExploreOutlinedIcon sx={{ marginRight: 3 }} />
+                <ExploreOutlinedIcon sx={{ marginRight: 1 }} />
                 <ListItemText primary="探索" />
               </ListItemButton>
             </ListItem>
@@ -159,7 +159,7 @@ const Layout = () => {
                 onClick={() => setTabValue(2)}
                 sx={{ height: 60 }}
               >
-                <DatasetOutlinedIcon sx={{ marginRight: 3 }} />
+                <DatasetOutlinedIcon sx={{ marginRight: 1 }} />
                 <Typography>数据库</Typography>
               </ListItemButton>
             </ListItem>
