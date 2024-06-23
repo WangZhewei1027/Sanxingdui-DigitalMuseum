@@ -49,7 +49,7 @@ const Detail = () => {
   const item = data.find((item) => item.id === id);
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="lg">
       <Grid
         container
         spacing={2}
@@ -70,35 +70,27 @@ const Detail = () => {
                 sx={{ height: "100%" }}
                 gap={2}
               >
-                <Card>
-                  <CardContent>
-                    <Typography variant="h5">
-                      “超短简介超短简介超短简介超短简介超短超短简介超短简介超短简介简介”
-                    </Typography>
-                  </CardContent>
-                </Card>
-
                 <Card sx={{ flexGrow: 1 }}>
                   <CardContent>
-                    <Typography variant="h5">
-                      线稿线稿线稿线稿线稿线稿线稿线稿线稿线稿线稿线稿线稿线稿线稿
-                    </Typography>
+                    <Typography variant="h5">“{item.description}”</Typography>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardContent>
-                    <Typography variant="h5">
-                      衣着衣着衣着衣着衣着衣着衣着衣着衣着衣着衣着衣着衣着衣着衣着衣着衣着
-                    </Typography>
+                    <Typography variant="h5">“ ”</Typography>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardContent>
-                    <Typography variant="h5">
-                      造型造型造型造型造型造型造型造型造型造型造型造型造型造型造型造型造型造型
-                    </Typography>
+                    <Typography variant="h5">“ ”</Typography>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent>
+                    <Typography variant="h5">“ ”</Typography>
                   </CardContent>
                 </Card>
               </Box>
@@ -152,7 +144,7 @@ const Detail = () => {
                       width: "100%",
                       objectFit: "cover",
                     }}
-                    src={require(`./assets/pics_nobg/${item.id}.png`)}
+                    src={require(`./assets/pics/${item.id}_${item.name}/main.JPG`)}
                     alt={item.name}
                   />
                 </Card>
@@ -192,7 +184,7 @@ const Detail = () => {
                 gap={2}
               >
                 {/* Right Middle */}
-                <Box display={"flex"}>
+                <Box display={"flex"} flexGrow={4}>
                   <Grid container spacing={2}>
                     <Grid item xs={6} md={6}>
                       <Box
@@ -201,85 +193,9 @@ const Detail = () => {
                         gap={2}
                         height={"100%"}
                       >
-                        <Card
-                          sx={{
-                            display: "flex",
-                            flexGrow: 1,
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <CardContent>
-                            <Box
-                              sx={{
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "center",
-                                justifyContent: "center",
-                              }}
-                            >
-                              <Typography variant="h3">商</Typography>
-                              <Typography variant="caption" sx={{ mt: 2 }}>
-                                年代
-                              </Typography>
-                            </Box>
-                          </CardContent>
-                        </Card>
-
-                        <Card
-                          sx={{
-                            display: "flex",
-                            flexGrow: 1,
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <CardContent>
-                            <Box
-                              sx={{
-                                display: "flex",
-                                flexGrow: 1,
-                                flexDirection: "column",
-                                alignItems: "center",
-                                justifyContent: "center",
-                              }}
-                            >
-                              <Typography variant="h3">
-                                {item.hierarchy}
-                              </Typography>
-                              <Typography variant="caption" sx={{ mt: 2 }}>
-                                文物级别
-                              </Typography>
-                            </Box>
-                          </CardContent>
-                        </Card>
-
-                        <Card
-                          sx={{
-                            display: "flex",
-                            flexGrow: 1,
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <CardContent>
-                            <Box
-                              sx={{
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "center",
-                                justifyContent: "center",
-                              }}
-                            >
-                              <Typography variant="h3">
-                                {item.material}
-                              </Typography>
-                              <Typography variant="caption" sx={{ mt: 2 }}>
-                                材料
-                              </Typography>
-                            </Box>
-                          </CardContent>
-                        </Card>
+                        <MyCard text="商" caption="年代" />
+                        <MyCard text={item.hierarchy} caption="文物级别" />
+                        <MyCard text={item.material} caption="类别" />
                       </Box>
                     </Grid>
 
@@ -311,7 +227,7 @@ const Detail = () => {
                       <MyCard text="n号坑" caption="出土坑位" />
                     </Grid>
                     <Grid item xs={7}>
-                      <MyCard text="一些文字" />
+                      <MyCard text="" caption="" fontSize="body1" />
                     </Grid>
                   </Grid>
                 </Box>

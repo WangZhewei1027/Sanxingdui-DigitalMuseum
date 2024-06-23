@@ -42,8 +42,8 @@ export default function MyImageList({ results }) {
               <img
                 src={
                   hoveredItem === item.id
-                    ? require(`./assets/pics_nobg/${item.id}.png`)
-                    : require(`./assets/pics/${item.id}.jpeg`)
+                    ? require(`./assets/pics/${item.id}_${item.name}/main.JPG`)
+                    : require(`./assets/pics/${item.id}_${item.name}/main.JPG`)
                 }
                 alt={item.title}
                 loading="lazy"
