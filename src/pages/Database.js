@@ -37,27 +37,23 @@ export default function Database() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          mx: 3,
         }}
       >
-        <Typography variant="h3" gutterBottom>
-          三星堆数据库
-        </Typography>
         <Box
           sx={{
             display: "flex",
             flexDirection: "row",
-            width: "70%",
-            padding: 1,
+            width: "100%",
+            justifyContent: "center",
           }}
         >
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ width: { xs: "100%", md: "60%" } }}>
             <SearchBar onSearch={handleSearch} data={data} />
           </Box>
           <ButtonGroup
             disableElevation
             aria-label="Disabled button group"
-            sx={{ ml: 2 }}
+            sx={{ marginLeft: 2 }}
           >
             <Button onClick={() => setCurrentView("Grid")}>
               <GridViewIcon />

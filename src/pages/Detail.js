@@ -11,6 +11,7 @@ import {
   Box,
 } from "@mui/material";
 import { spacing } from "@mui/system";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 function MyCard({ text, caption, fontSize = "h3" }) {
   return (
@@ -58,7 +59,7 @@ const Detail = () => {
         {item ? (
           <>
             {/* Left */}
-            <Grid
+            {/* <Grid
               item
               xs={12}
               md={4}
@@ -94,13 +95,13 @@ const Detail = () => {
                   </CardContent>
                 </Card>
               </Box>
-            </Grid>
+            </Grid> */}
 
             {/* Middle */}
             <Grid
               item
               xs={12}
-              md={4}
+              md={5}
               sx={{ display: "flex", flexDirection: "column" }}
             >
               <Box
@@ -165,7 +166,9 @@ const Detail = () => {
                         justifyContent: "center",
                       }}
                     >
-                      <Typography variant="h6">{item.size}</Typography>
+                      <Typography variant="h6">
+                        一些文字一些文字一些文字一些文字一些文字一些文字一些文字一些文字
+                      </Typography>
                       <Typography variant="caption" sx={{ marginTop: 1 }}>
                         尺寸
                       </Typography>
@@ -176,7 +179,7 @@ const Detail = () => {
             </Grid>
 
             {/* Right */}
-            <Grid item xs={12} md={4} flexDirection={"column"}>
+            <Grid item xs={12} md={7} flexDirection={"column"}>
               <Box
                 display={"flex"}
                 flexDirection={"column"}
@@ -186,7 +189,7 @@ const Detail = () => {
                 {/* Right Middle */}
                 <Box display={"flex"} flexGrow={4}>
                   <Grid container spacing={2}>
-                    <Grid item xs={6} md={6}>
+                    <Grid item xs={4} md={4}>
                       <Box
                         display={"flex"}
                         flexDirection={"Column"}
@@ -199,7 +202,7 @@ const Detail = () => {
                       </Box>
                     </Grid>
 
-                    <Grid item xs={6} md={6}>
+                    <Grid item xs={8} md={8}>
                       <Card sx={{ height: "100%" }}>
                         <CardContent>
                           <Typography variant="h5">
