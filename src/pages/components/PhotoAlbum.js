@@ -1,46 +1,64 @@
 import React from "react";
-import Slider from "react-slick";
-import { Card, CardContent, Box, Typography } from "@mui/material";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Carousel from "react-material-ui-carousel";
+import { Box } from "@mui/material";
 
-const photos = [
-  "https://picsum.photos/200/300",
-  "https://picsum.photos/200/300",
-  "https://picsum.photos/200/300",
-  "https://picsum.photos/200/300",
-  "https://picsum.photos/200/300",
-  "https://picsum.photos/200/300",
-];
+const PhotoAlbum = ({ pathName, main = true }) => {
+  const srcs = [];
 
-const PhotoAlbum = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    adaptiveHeight: true,
-  };
+  // Load main image if it exists
+  if (main) {
+    try {
+      const mainSrc = require(`../assets/pics/${pathName}/main.JPG`);
+      srcs.push(mainSrc);
+    } catch (error) {
+      console.error(`Image not found: ../assets/pics/${pathName}/main.JPG`);
+    }
+  }
+
+  // Load variant images if they exist
+  let i = 1;
+  while (true) {
+    try {
+      const variantSrc = require(`../assets/pics/${pathName}/var_${i}.JPG`);
+      srcs.push(variantSrc);
+      i++;
+    } catch (error) {
+      break;
+    }
+  }
 
   return (
-    <Card>
-      <CardContent sx={{ p: 0 }}>
-        <Slider {...settings}>
-          {photos.map((photo, index) => (
-            <Box
-              key={index}
-              sx={{
-                height: "300px",
-                backgroundImage: `url(${photo})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            />
-          ))}
-        </Slider>
-      </CardContent>
-    </Card>
+    <Box sx={{ width: "100%" }}>
+      <Carousel
+      // indicatorContainerProps={{
+      //   style: {
+      //     position: "absolute",
+      //     bottom: "10px",
+      //     left: "50%",
+      //     transform: "translateX(-50%)",
+      //     zIndex: 10,
+      //     display: "flex",
+      //     justifyContent: "center",
+      //   },
+      // }}
+      >
+        {srcs.map((src, i) => (
+          <Box
+            component="img"
+            key={i}
+            src={src}
+            alt={`Image ${i}`}
+            sx={{
+              display: "block",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
+          />
+        ))}
+      </Carousel>
+    </Box>
   );
 };
 

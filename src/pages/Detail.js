@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import data from "./assets/data.json";
 import {
@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { spacing } from "@mui/system";
 import { ScrollToTop } from "./components/ScrollToTop";
+import PhotoAlbum from "./components/PhotoAlbum";
 
 function MyCard({ text, caption, fontSize = "h3" }) {
   return (
@@ -48,6 +49,11 @@ function MyCard({ text, caption, fontSize = "h3" }) {
 const Detail = () => {
   const { id } = useParams();
   const item = data.find((item) => item.id === id);
+  const _pics = [
+    { pathName: `${item.id}_${item.name}`, name: "main" },
+    { pathName: `${item.id}_${item.name}`, name: "var_1" },
+    { pathName: `${item.id}_${item.name}`, name: "var_2" },
+  ];
 
   return (
     <Container maxWidth="lg">
@@ -139,15 +145,27 @@ const Detail = () => {
                 </Card>
 
                 <Card>
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      width: "100%",
-                      objectFit: "cover",
-                    }}
-                    src={require(`./assets/pics/${item.id}_${item.name}/main.JPG`)}
-                    alt={item.name}
-                  />
+                  {item.luma ? (
+                    <CardMedia
+                      component="img"
+                      sx={{
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                      src={require(`./assets/pics/${item.id}_${item.name}/main.JPG`)}
+                      alt={item.name}
+                    />
+                  ) : (
+                    <CardMedia
+                      component="img"
+                      sx={{
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                      src={require(`./assets/pics/${item.id}_${item.name}/main.JPG`)}
+                      alt={item.name}
+                    />
+                  )}
                 </Card>
 
                 <Card
@@ -203,22 +221,28 @@ const Detail = () => {
                     </Grid>
 
                     <Grid item xs={8} md={8}>
-                      <Card sx={{ height: "100%" }}>
+                      <Box
+                        sx={{
+                          height: "100%",
+                          alignContent: "center",
+                          justifyContent: "center",
+                        }}
+                      >
                         {item.luma ? (
                           <iframe
                             src={`${item.luma}?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false`}
                             width="100%"
                             height="100%"
-                            frameborder="0"
                             title="luma embed"
                             style={{ border: "None" }}
                           ></iframe>
                         ) : (
-                          <Typography variant="h6" align="center">
-                            Item not found
-                          </Typography>
+                          <PhotoAlbum
+                            pathName={`${item.id}_${item.name}`}
+                            main={false}
+                          />
                         )}
-                      </Card>
+                      </Box>
                     </Grid>
                   </Grid>
                 </Box>
