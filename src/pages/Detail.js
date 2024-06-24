@@ -204,11 +204,20 @@ const Detail = () => {
 
                     <Grid item xs={8} md={8}>
                       <Card sx={{ height: "100%" }}>
-                        <CardContent>
-                          <Typography variant="h5">
-                            相册细节相册细节相册细节相册细节细节相册细节相册细节相册细节相册细节相册细节相册细节相册相册细节相册细节相册细节相册细节相册
+                        {item.luma ? (
+                          <iframe
+                            src={`${item.luma}?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false`}
+                            width="100%"
+                            height="100%"
+                            frameborder="0"
+                            title="luma embed"
+                            style={{ border: "None" }}
+                          ></iframe>
+                        ) : (
+                          <Typography variant="h6" align="center">
+                            Item not found
                           </Typography>
-                        </CardContent>
+                        )}
                       </Card>
                     </Grid>
                   </Grid>

@@ -6,7 +6,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000028",
@@ -15,7 +16,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "玉石器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000096",
@@ -24,7 +26,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": "https://lumalabs.ai/embed/c04ba2a1-2547-4bc4-9a50-e3c2fb09805b"
   },
   {
     "id": "00000097",
@@ -33,7 +36,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000007",
@@ -42,7 +46,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "金银器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000008",
@@ -51,7 +56,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "金银器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000012",
@@ -60,7 +66,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "金银器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000029",
@@ -69,7 +76,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "玉石器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000049",
@@ -78,7 +86,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "玉石器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000050",
@@ -87,7 +96,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "玉石器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000005",
@@ -96,7 +106,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "玉石器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000048",
@@ -105,7 +116,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "玉石器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000099",
@@ -114,7 +126,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "玉石器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000047",
@@ -123,7 +136,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "玉石器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000009",
@@ -132,7 +146,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "金银器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000002",
@@ -141,7 +156,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "金银器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000010",
@@ -150,7 +166,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "金银器",
-    "category": "/"
+    "category": "/",
+    "luma": "https://lumalabs.ai/embed/4bc0df0c-cc80-443f-8d56-19ff24141f7c"
   },
   {
     "id": "00000001",
@@ -159,7 +176,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "金银器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000011",
@@ -168,7 +186,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "金银器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000032",
@@ -177,7 +196,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "金银器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000023",
@@ -186,7 +206,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "陶器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000022",
@@ -195,7 +216,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "陶器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000000",
@@ -204,7 +226,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "陶器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000025",
@@ -213,7 +236,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "陶器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000024",
@@ -222,7 +246,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "陶器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000026",
@@ -231,7 +256,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "陶器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000003",
@@ -240,7 +266,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000013",
@@ -249,7 +276,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000014",
@@ -258,7 +286,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000015",
@@ -267,7 +296,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000016",
@@ -276,7 +306,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000017",
@@ -285,7 +316,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000018",
@@ -294,7 +326,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000019",
@@ -303,7 +336,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000020",
@@ -312,7 +346,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000021",
@@ -321,7 +356,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000033",
@@ -330,7 +366,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000034",
@@ -339,7 +376,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000067",
@@ -348,7 +386,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000054",
@@ -357,7 +396,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000098",
@@ -366,7 +406,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000093",
@@ -375,7 +416,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000045",
@@ -384,7 +426,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": "https://lumalabs.ai/embed/5ec56421-da79-4ee0-a226-d4c8bdd14206"
   },
   {
     "id": "00000065",
@@ -393,7 +436,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000092",
@@ -402,7 +446,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000091",
@@ -411,7 +456,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000051",
@@ -420,7 +466,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000056",
@@ -429,7 +476,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000061",
@@ -438,7 +486,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000062",
@@ -447,7 +496,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000031",
@@ -456,7 +506,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000046",
@@ -465,7 +516,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000030",
@@ -474,7 +526,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000073",
@@ -483,7 +536,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000075",
@@ -492,7 +546,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000066",
@@ -501,7 +556,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000027",
@@ -510,7 +566,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000053",
@@ -519,7 +576,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000055",
@@ -528,7 +586,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000059",
@@ -537,7 +596,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000006",
@@ -546,7 +606,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000057",
@@ -555,7 +616,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000058",
@@ -564,7 +626,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000060",
@@ -573,7 +636,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000063",
@@ -582,7 +646,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000064",
@@ -591,7 +656,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000079",
@@ -600,7 +666,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000078",
@@ -609,7 +676,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000077",
@@ -618,7 +686,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000080",
@@ -627,7 +696,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000068",
@@ -636,7 +706,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000069",
@@ -645,7 +716,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000070",
@@ -654,7 +726,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000071",
@@ -663,7 +736,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000004",
@@ -672,7 +746,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000052",
@@ -681,7 +756,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000072",
@@ -690,7 +766,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000094",
@@ -699,7 +776,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000090",
@@ -708,7 +786,8 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   },
   {
     "id": "00000076",
@@ -717,6 +796,7 @@
     "year": "商",
     "hierarchy": "/",
     "material": "青铜器",
-    "category": "/"
+    "category": "/",
+    "luma": ""
   }
 ]
