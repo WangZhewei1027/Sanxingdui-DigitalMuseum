@@ -1,18 +1,23 @@
 {
   "files": {
-    "main.css": "/Sanxingdui-DigitalMuseum/static/css/main.bb323166.css",
-    "main.js": "/Sanxingdui-DigitalMuseum/static/js/main.b76bca35.js",
+    "main.js": "/Sanxingdui-DigitalMuseum/static/js/main.92965479.js",
+    "static/media/var_4.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_4.e1ddcbe4f0a49b575d35.JPG",
+    "static/media/tag.JPG": "/Sanxingdui-DigitalMuseum/static/media/tag.96bbdcd990923e99b676.JPG",
+    "static/media/var_2.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_2.1fd1b96356234e04f440.JPG",
+    "static/media/var_3.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_3.fc411271055a4fee3f4b.JPG",
+    "static/media/var_1.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_1.5811ceaf91d5ccbb017a.JPG",
+    "static/media/var_6.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_6.7b105d6f5e236a369346.JPG",
     "static/media/main.JPG": "/Sanxingdui-DigitalMuseum/static/media/main.67b509c8d9444e774917.JPG",
-    "static/media/slick.svg": "/Sanxingdui-DigitalMuseum/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/Sanxingdui-DigitalMuseum/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/Sanxingdui-DigitalMuseum/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/slick.woff": "/Sanxingdui-DigitalMuseum/static/media/slick.295183786cd8a1389865.woff",
+    "static/media/var_5.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_5.7d90d8e7e17f11d0fd52.JPG",
+    "static/media/var_7.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_7.1c3543876e0fff8d416d.JPG",
+    "static/media/var_9.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_9.c3322607710a444f15a9.JPG",
+    "static/media/var_10.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_10.bec88760d84c685a7310.JPG",
+    "static/media/var_8.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_8.bece51c084cb8ab1730d.JPG",
+    "static/media/var_11.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_11.ea18aa8f4492f07b8923.JPG",
     "index.html": "/Sanxingdui-DigitalMuseum/index.html",
-    "main.bb323166.css.map": "/Sanxingdui-DigitalMuseum/static/css/main.bb323166.css.map",
-    "main.b76bca35.js.map": "/Sanxingdui-DigitalMuseum/static/js/main.b76bca35.js.map"
+    "main.92965479.js.map": "/Sanxingdui-DigitalMuseum/static/js/main.92965479.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb323166.css",
-    "static/js/main.b76bca35.js"
+    "static/js/main.92965479.js"
   ]
 }

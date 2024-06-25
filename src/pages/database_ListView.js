@@ -24,21 +24,59 @@ const ListView = ({ results }) => {
                 key={item.id}
                 onClick={() => handleDetailClick(item.id)}
                 style={{ cursor: "pointer" }}
-                variant="outlined"
                 sx={{ my: 2 }}
               >
-                <CardContent sx={{ m: 2 }}>
-                  <Typography
-                    sx={{ fontSize: 20 }}
-                    color="text.primary"
-                    gutterBottom
-                  >
-                    {item.name}
-                  </Typography>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {item.year}
-                  </Typography>
-                  <Typography variant="body2">{item.description}</Typography>
+                <CardContent>
+                  <Box sx={{ display: "flex", flexDirection: "column" }}>
+                    <Box
+                      sx={{
+                        borderBottom: "1px solid #F2ECDD",
+                        display: "flex",
+                        flexDirection: "row",
+                        padding: "20px",
+                      }}
+                    >
+                      <Box sx={{ display: "block", width: "30px" }} />
+                      <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                        {item.name}
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          display: "block",
+                          width: "30px",
+                          height: "40px",
+                          borderRight: "1px solid #F2ECDD",
+                        }}
+                      />
+                      <Box
+                        sx={{
+                          display: "block",
+                          flexDirection: "column",
+                          padding: "20px",
+                        }}
+                      >
+                        <Box sx={{ marginBottom: "20px" }}>
+                          <Typography variant="h5">{item.year}</Typography>
+                          <Typography
+                            sx={{ marginBottom: "20px" }}
+                            variant="subtitle1"
+                          >
+                            {item.yearDetail}
+                          </Typography>
+                        </Box>
+                        <Typography variant="h6">
+                          {`${item.unearthed}年${item.site}出土`}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
                 </CardContent>
               </Card>
             ))

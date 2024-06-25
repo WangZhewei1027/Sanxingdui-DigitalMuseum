@@ -33,7 +33,7 @@ export default function MyImageList({ results }) {
         <ImageList variant="masonry" cols={isMdUp ? 5 : 2} gap={20}>
           {results.map((item) => (
             <ImageListItem
-              key={item.img}
+              key={item.id}
               onClick={() => handleImageClick(item.id)}
               onMouseEnter={() => handleMouseEnter(item.id)}
               onMouseLeave={handleMouseLeave}
@@ -45,7 +45,7 @@ export default function MyImageList({ results }) {
                     ? require(`./assets/pics/${item.id}_${item.name}/main.JPG`)
                     : require(`./assets/pics/${item.id}_${item.name}/main.JPG`)
                 }
-                alt={item.title}
+                alt={item.name}
                 loading="lazy"
               />
               <ImageListItemBar position="below" title={item.name} />
