@@ -15,7 +15,7 @@ const ListView = ({ results }) => {
   };
 
   return (
-    <Container>
+    <>
       <Box>
         <Box sx={{ width: "100%" }}>
           {results.length > 0 ? (
@@ -87,7 +87,7 @@ const ListView = ({ results }) => {
           )}
         </Box>
       </Box>
-    </Container>
+    </>
   );
 };
 
