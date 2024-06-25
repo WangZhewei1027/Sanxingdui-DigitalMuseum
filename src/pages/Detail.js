@@ -13,8 +13,9 @@ import {
 import { spacing } from "@mui/system";
 import { ScrollToTop } from "./components/ScrollToTop";
 import PhotoAlbum from "./components/PhotoAlbum";
+import { useTheme, useMediaQuery } from "@mui/material";
 
-function MyCard({ text, caption, fontSize = "h3" }) {
+function MyCard({ text, caption, fontSize }) {
   return (
     <React.Fragment>
       <Card
@@ -54,6 +55,8 @@ const Detail = () => {
     { pathName: `${item.id}_${item.name}`, name: "var_1" },
     { pathName: `${item.id}_${item.name}`, name: "var_2" },
   ];
+  const theme = useTheme();
+  const isMd = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Container maxWidth="lg">
@@ -64,45 +67,6 @@ const Detail = () => {
       >
         {item ? (
           <>
-            {/* Left */}
-            {/* <Grid
-              item
-              xs={12}
-              md={4}
-              sx={{ display: "flex", flexDirection: "column" }}
-            >
-              <Box
-                display={"flex"}
-                flexDirection={"column"}
-                sx={{ height: "100%" }}
-                gap={2}
-              >
-                <Card sx={{ flexGrow: 1 }}>
-                  <CardContent>
-                    <Typography variant="h5">“{item.description}”</Typography>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent>
-                    <Typography variant="h5">“ ”</Typography>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent>
-                    <Typography variant="h5">“ ”</Typography>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent>
-                    <Typography variant="h5">“ ”</Typography>
-                  </CardContent>
-                </Card>
-              </Box>
-            </Grid> */}
-
             {/* Middle */}
             <Grid
               item
@@ -134,7 +98,7 @@ const Detail = () => {
                       }}
                     >
                       <Typography
-                        variant="h2"
+                        variant={isMd ? "h3" : "h2"}
                         align="center"
                         sx={{ fontWeight: "bold" }}
                       >
@@ -184,7 +148,7 @@ const Detail = () => {
                         justifyContent: "center",
                       }}
                     >
-                      <Typography variant="h6">
+                      <Typography variant={isMd ? "h7" : "h6"}>
                         一些文字一些文字一些文字一些文字一些文字一些文字一些文字一些文字
                       </Typography>
                       <Typography variant="caption" sx={{ marginTop: 1 }}>
@@ -214,9 +178,21 @@ const Detail = () => {
                         gap={2}
                         height={"100%"}
                       >
-                        <MyCard text="商" caption="年代" />
-                        <MyCard text={item.hierarchy} caption="文物级别" />
-                        <MyCard text={item.material} caption="类别" />
+                        <MyCard
+                          text={item.year}
+                          caption="年代"
+                          fontSize={isMd ? "h6" : "h4"}
+                        />
+                        <MyCard
+                          text={item.hierarchy}
+                          caption="文物级别"
+                          fontSize={isMd ? "h6" : "h4"}
+                        />
+                        <MyCard
+                          text={item.material}
+                          caption="类别"
+                          fontSize={isMd ? "h6" : "h4"}
+                        />
                       </Box>
                     </Grid>
 
@@ -253,14 +229,18 @@ const Detail = () => {
                       <MyCard
                         text="XX制造方法"
                         caption="制造方法"
-                        fontSize="h4"
+                        fontSize={isMd ? "h6" : "h4"}
                       />
                     </Grid>
                     <Grid item xs={5} md={5}>
                       <MyCard text={item.category} caption="类别" />
                     </Grid>
                     <Grid item xs={5}>
-                      <MyCard text="n号坑" caption="出土坑位" />
+                      <MyCard
+                        text={item.site}
+                        caption="出土坑位"
+                        fontSize={isMd ? "h6" : "h4"}
+                      />
                     </Grid>
                     <Grid item xs={7}>
                       <MyCard text="" caption="" fontSize="body1" />

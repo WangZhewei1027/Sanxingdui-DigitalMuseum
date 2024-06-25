@@ -4,11 +4,7 @@ import { Container, Box } from "@mui/material";
 const Explore = () => {
   return (
     <>
-      <Container maxWidth="xs">
-        <Box sx={{ height: "100%" }}>
-          <PhotoAlbum />
-        </Box>
-      </Container>
+      <Container maxWidth="xs"></Container>
     </>
   );
 };
