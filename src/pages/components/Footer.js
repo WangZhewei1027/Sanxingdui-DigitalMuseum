@@ -9,7 +9,7 @@ function Footer() {
         py: 3,
         mt: 4,
         textAlign: "center",
-        borderTop: "1px solid #F2ECDD",
+        backgroundColor: "rgb(23,23,23)",
       }}
     >
       <Box>

@@ -59,12 +59,16 @@ const Detail = () => {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.down("md"));
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <Container maxWidth="lg">
       <Grid
         container
         spacing={2}
-        sx={{ my: 4, display: "flex", alignItems: "stretch" }}
+        sx={{ display: "flex", alignItems: "stretch" }}
       >
         {item ? (
           <>

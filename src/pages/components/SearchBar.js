@@ -71,7 +71,7 @@ const SearchBar = ({ onSearch, data, initialSearchTerms = [] }) => {
         return (
           <Box
             component="li"
-            key={option.label}
+            key={Math.random().toString(36).substr(2, 9)}
             {...optionProps}
             sx={{ display: "flex", alignItems: "center" }}
           >
