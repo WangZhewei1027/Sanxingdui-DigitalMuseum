@@ -51,17 +51,39 @@ function MyCard({ text, caption, fontSize }) {
 const Detail = () => {
   const { id } = useParams();
   const item = data.find((item) => item.id === id);
-  const _pics = [
-    { pathName: `${item.id}_${item.name}`, name: "main" },
-    { pathName: `${item.id}_${item.name}`, name: "var_1" },
-    { pathName: `${item.id}_${item.name}`, name: "var_2" },
-  ];
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  let content;
+
+  if (item.luma) {
+    content = (
+      <iframe
+        src={`${item.luma}?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false`}
+        width="100%"
+        height="100%"
+        title="luma embed"
+        style={{ border: "none" }}
+      ></iframe>
+    );
+  } else {
+    try {
+      require(`./assets/pics/${item.id}_${item.name}/var_1.JPG`);
+      content = (
+        <PhotoAlbum pathName={`${item.id}_${item.name}`} main={false} />
+      );
+    } catch (error) {
+      content = (
+        <Card sx={{ height: "100%" }}>
+          <CardContent></CardContent>
+        </Card>
+      );
+    }
+  }
 
   return (
     <Container maxWidth="lg">
@@ -209,20 +231,7 @@ const Detail = () => {
                           justifyContent: "center",
                         }}
                       >
-                        {item.luma ? (
-                          <iframe
-                            src={`${item.luma}?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false`}
-                            width="100%"
-                            height="100%"
-                            title="luma embed"
-                            style={{ border: "None" }}
-                          ></iframe>
-                        ) : (
-                          <PhotoAlbum
-                            pathName={`${item.id}_${item.name}`}
-                            main={false}
-                          />
-                        )}
+                        {content}
                       </Box>
                     </Grid>
                   </Grid>
