@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Autocomplete, TextField, Chip, Box, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-const SearchBar = ({ onSearch, data }) => {
-  const [selectedTags, setSelectedTags] = useState([]);
+const SearchBar = ({ onSearch, data, initialSearchTerms = [] }) => {
+  const [selectedTags, setSelectedTags] = useState(initialSearchTerms);
+  const navigate = useNavigate();
 
   const tags = ["玉石器", "青铜器", "陶器", "金银器"];
 
@@ -14,22 +16,29 @@ const SearchBar = ({ onSearch, data }) => {
 
   const getFilteredOptions = (combinedOptions, selectedTags) => {
     return combinedOptions.filter((option) => {
-      // Exclude options that are tags and are present in the selectedTags array
       return !selectedTags.includes(option.label);
     });
   };
 
   const handleInputChange = (event, value) => {
     const selectedTags = value.map((v) => (v.label ? v.label : v));
-
-    setSelectedTags(selectedTags); // update selected tags state
-    onSearch(selectedTags); // call the onSearch function
+    setSelectedTags(selectedTags);
+    onSearch(selectedTags);
+    const queryString = selectedTags
+      .map((tag) => `tags=${encodeURIComponent(tag)}`)
+      .join("&");
+    navigate(`?${queryString}`);
   };
+
+  useEffect(() => {
+    setSelectedTags(initialSearchTerms);
+    onSearch(initialSearchTerms);
+  }, [initialSearchTerms, onSearch]);
 
   return (
     <Autocomplete
       multiple
-      options={getFilteredOptions(combinedOptions, selectedTags)} // use the filtered options here
+      options={getFilteredOptions(combinedOptions, selectedTags)}
       freeSolo
       getOptionLabel={(option) => (option.label ? option.label : option)}
       filterOptions={(options, state) => {
@@ -38,17 +47,18 @@ const SearchBar = ({ onSearch, data }) => {
         );
       }}
       onChange={(event, value) => handleInputChange(event, value)}
+      value={selectedTags.map((tag) => ({ label: tag }))}
       renderTags={(value, getTagProps) =>
         value.map((option, index) => {
-          const { key, ...tagProps } = getTagProps({ index }); // Destructure key and other props
+          const { key, ...tagProps } = getTagProps({ index });
           return (
             <Chip
-              key={option.label ? option.label : option} // Ensure key is passed directly here
+              key={option.label ? option.label : option}
               variant="outlined"
               label={option.label ? option.label : option}
               {...tagProps}
               sx={
-                option.type === "tag"
+                tags.includes(option.label)
                   ? { backgroundColor: "rgba(51,51,51)" }
                   : {}
               }
@@ -57,11 +67,11 @@ const SearchBar = ({ onSearch, data }) => {
         })
       }
       renderOption={(props, option) => {
-        const { key, ...optionProps } = props; // Destructure key and other props
+        const { key, ...optionProps } = props;
         return (
           <Box
             component="li"
-            key={option.label} // Ensure key is passed directly here
+            key={option.label}
             {...optionProps}
             sx={{ display: "flex", alignItems: "center" }}
           >
@@ -75,7 +85,7 @@ const SearchBar = ({ onSearch, data }) => {
       renderInput={(params) => (
         <TextField {...params} variant="outlined" label="搜索藏品" fullWidth />
       )}
-      sx={{ width: "100%" }} // Set the width to 100%
+      sx={{ width: "100%" }}
     />
   );
 };

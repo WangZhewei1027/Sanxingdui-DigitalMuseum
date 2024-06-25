@@ -16,17 +16,31 @@ import SearchBar from "./components/SearchBar";
 import data from "./assets/data.json";
 import Slide from "@mui/material/Slide";
 import Footer from "./components/Footer";
+import { useLocation } from "react-router-dom";
 
 export default function Database() {
   const [searchResults, setSearchResults] = useState(data);
   const [currentView, setCurrentView] = useState("Grid");
   const [scrollPosition, setScrollPosition] = useState(0);
+  const location = useLocation();
+
+  const getInitialSearchTerms = () => {
+    const params = new URLSearchParams(location.search);
+    const tags = params.getAll("tags");
+    return tags;
+  };
+
+  useEffect(() => {
+    const initialSearchTerms = getInitialSearchTerms();
+    if (initialSearchTerms.length > 0) {
+      handleSearch(initialSearchTerms);
+    }
+  }, [location.search]);
 
   const handleSearch = (searchTerms) => {
     if (searchTerms.length === 0) {
       setSearchResults(data);
     } else {
-      console.log(searchTerms);
       const results = data.filter((item) =>
         searchTerms.some(
           (term) =>
@@ -34,7 +48,6 @@ export default function Database() {
             item.material.toLowerCase().includes(term.toLowerCase())
         )
       );
-
       setSearchResults(results);
     }
   };
@@ -74,7 +87,11 @@ export default function Database() {
             }}
           >
             <Box sx={{ width: { xs: "100%", md: "60%" } }}>
-              <SearchBar onSearch={handleSearch} data={data} />
+              <SearchBar
+                onSearch={handleSearch}
+                data={data}
+                initialSearchTerms={getInitialSearchTerms()}
+              />
             </Box>
             <ButtonGroup
               disableElevation
