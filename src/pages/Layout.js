@@ -19,7 +19,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import DatasetOutlinedIcon from "@mui/icons-material/DatasetOutlined";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { useTheme, useMediaQuery } from "@mui/material";
+import { Info } from "@mui/icons-material";
+import Footer from "./components/Footer";
 
 const Layout = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -163,12 +166,23 @@ const Layout = () => {
                 <Typography>数据库</Typography>
               </ListItemButton>
             </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton
+                component={Link}
+                to="https://flower-vein-245.notion.site/TeamSpace-Home-6b876d41bceb4cb8bdc55d799bc33fb3"
+                sx={{ height: 60 }}
+              >
+                <InfoOutlinedIcon sx={{ marginRight: 1 }} />
+                <Typography>关于我们</Typography>
+              </ListItemButton>
+            </ListItem>
           </List>
         </Box>
       </Drawer>
       <Box>
         <Outlet />
       </Box>
+      <Footer />
     </>
   );
 };

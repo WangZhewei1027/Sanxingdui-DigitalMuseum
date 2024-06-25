@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
+import Footer from "./components/Footer";
 
 export default function MyImageList({ results }) {
   const navigate = useNavigate();
@@ -28,35 +29,37 @@ export default function MyImageList({ results }) {
   };
 
   return (
-    <Box sx={{ overflowY: "scroll", height: "100%" }}>
-      {results.length > 0 ? (
-        <ImageList variant="masonry" cols={isMdUp ? 5 : 2} gap={20}>
-          {results.map((item) => (
-            <ImageListItem
-              key={item.id}
-              onClick={() => handleImageClick(item.id)}
-              onMouseEnter={() => handleMouseEnter(item.id)}
-              onMouseLeave={handleMouseLeave}
-              style={{ cursor: "pointer" }}
-            >
-              <img
-                src={
-                  hoveredItem === item.id
-                    ? require(`./assets/pics/${item.id}_${item.name}/main.JPG`)
-                    : require(`./assets/pics/${item.id}_${item.name}/main.JPG`)
-                }
-                alt={item.name}
-                loading="lazy"
-              />
-              <ImageListItemBar position="below" title={item.name} />
-            </ImageListItem>
-          ))}
-        </ImageList>
-      ) : (
-        <Typography variant="h6" align="center">
-          No results
-        </Typography>
-      )}
-    </Box>
+    <>
+      <Box sx={{ overflowY: "scroll", height: "100%" }}>
+        {results.length > 0 ? (
+          <ImageList variant="masonry" cols={isMdUp ? 5 : 2} gap={20}>
+            {results.map((item) => (
+              <ImageListItem
+                key={item.id}
+                onClick={() => handleImageClick(item.id)}
+                onMouseEnter={() => handleMouseEnter(item.id)}
+                onMouseLeave={handleMouseLeave}
+                style={{ cursor: "pointer" }}
+              >
+                <img
+                  src={
+                    hoveredItem === item.id
+                      ? require(`./assets/pics/${item.id}_${item.name}/main.JPG`)
+                      : require(`./assets/pics/${item.id}_${item.name}/main.JPG`)
+                  }
+                  alt={item.name}
+                  loading="lazy"
+                />
+                <ImageListItemBar position="below" title={item.name} />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        ) : (
+          <Typography variant="h6" align="center">
+            No results
+          </Typography>
+        )}
+      </Box>
+    </>
   );
 }

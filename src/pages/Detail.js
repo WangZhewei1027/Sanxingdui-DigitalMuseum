@@ -14,6 +14,7 @@ import { spacing } from "@mui/system";
 import { ScrollToTop } from "./components/ScrollToTop";
 import PhotoAlbum from "./components/PhotoAlbum";
 import { useTheme, useMediaQuery } from "@mui/material";
+import Footer from "./components/Footer";
 
 function MyCard({ text, caption, fontSize }) {
   return (

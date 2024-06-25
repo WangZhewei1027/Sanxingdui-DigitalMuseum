@@ -15,6 +15,7 @@ import GridView from "./database_GridView";
 import SearchBar from "./components/SearchBar";
 import data from "./assets/data.json";
 import Slide from "@mui/material/Slide";
+import Footer from "./components/Footer";
 
 export default function Database() {
   const [searchResults, setSearchResults] = useState(data);
@@ -54,70 +55,72 @@ export default function Database() {
   }, []);
 
   return (
-    <Container>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+    <>
+      <Container>
         <Box
           sx={{
             display: "flex",
-            flexDirection: "row",
-            width: "100%",
+            flexDirection: "column",
+            alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <Box sx={{ width: { xs: "100%", md: "60%" } }}>
-            <SearchBar onSearch={handleSearch} data={data} />
-          </Box>
-          <ButtonGroup
-            disableElevation
-            aria-label="Disabled button group"
-            sx={{ marginLeft: 2 }}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "center",
+            }}
           >
-            <Button onClick={() => setCurrentView("Grid")}>
-              <GridViewIcon />
-            </Button>
-            <Button onClick={() => setCurrentView("List")}>
-              <FormatListBulletedIcon />
-            </Button>
-          </ButtonGroup>
+            <Box sx={{ width: { xs: "100%", md: "60%" } }}>
+              <SearchBar onSearch={handleSearch} data={data} />
+            </Box>
+            <ButtonGroup
+              disableElevation
+              aria-label="Disabled button group"
+              sx={{ marginLeft: 2 }}
+            >
+              <Button onClick={() => setCurrentView("Grid")}>
+                <GridViewIcon />
+              </Button>
+              <Button onClick={() => setCurrentView("List")}>
+                <FormatListBulletedIcon />
+              </Button>
+            </ButtonGroup>
+          </Box>
         </Box>
-      </Box>
-      {currentView === "Grid" && (
-        <>
-          <GridView results={searchResults} />
-        </>
-      )}
-      {currentView === "List" && (
-        <>
-          <ListView results={searchResults} />
-        </>
-      )}
-      <Slide
-        direction="up"
-        in={scrollPosition > 600}
-        mountOnEnter
-        unmountOnExit
-      >
-        <Fab
-          color="primary"
-          aria-label="back to top"
-          onClick={handleScrollToTop}
-          sx={{
-            position: "fixed",
-            bottom: 16,
-            right: 16,
-            zIndex: 1000,
-          }}
+        {currentView === "Grid" && (
+          <>
+            <GridView results={searchResults} />
+          </>
+        )}
+        {currentView === "List" && (
+          <>
+            <ListView results={searchResults} />
+          </>
+        )}
+        <Slide
+          direction="up"
+          in={scrollPosition > 600}
+          mountOnEnter
+          unmountOnExit
         >
-          <ArrowUpwardIcon />
-        </Fab>
-      </Slide>
-    </Container>
+          <Fab
+            color="primary"
+            aria-label="back to top"
+            onClick={handleScrollToTop}
+            sx={{
+              position: "fixed",
+              bottom: 16,
+              right: 16,
+              zIndex: 1000,
+            }}
+          >
+            <ArrowUpwardIcon />
+          </Fab>
+        </Slide>
+      </Container>
+    </>
   );
 }
