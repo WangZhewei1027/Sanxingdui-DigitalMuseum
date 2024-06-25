@@ -1,16 +1,25 @@
-import * as React from "react";
-import { useState } from "react";
-import { Container, Box, Typography, Button, ButtonGroup } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import {
+  Container,
+  Box,
+  Typography,
+  Button,
+  ButtonGroup,
+  Fab,
+} from "@mui/material";
 import GridViewIcon from "@mui/icons-material/GridView";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ListView from "./database_ListView";
 import GridView from "./database_GridView";
 import SearchBar from "./components/SearchBar";
 import data from "./assets/data.json";
+import Slide from "@mui/material/Slide";
 
 export default function Database() {
   const [searchResults, setSearchResults] = useState(data);
   const [currentView, setCurrentView] = useState("Grid");
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleSearch = (searchTerms) => {
     if (searchTerms.length === 0) {
@@ -28,6 +37,21 @@ export default function Database() {
       setSearchResults(results);
     }
   };
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleScroll = () => {
+    setScrollPosition(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <Container>
@@ -74,6 +98,26 @@ export default function Database() {
           <ListView results={searchResults} />
         </>
       )}
+      <Slide
+        direction="up"
+        in={scrollPosition > 600}
+        mountOnEnter
+        unmountOnExit
+      >
+        <Fab
+          color="primary"
+          aria-label="back to top"
+          onClick={handleScrollToTop}
+          sx={{
+            position: "fixed",
+            bottom: 16,
+            right: 16,
+            zIndex: 1000,
+          }}
+        >
+          <ArrowUpwardIcon />
+        </Fab>
+      </Slide>
     </Container>
   );
 }
