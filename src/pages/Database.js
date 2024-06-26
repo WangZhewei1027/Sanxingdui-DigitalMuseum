@@ -17,12 +17,15 @@ import data from "./assets/data.json";
 import Slide from "@mui/material/Slide";
 import Footer from "./components/Footer";
 import { useLocation } from "react-router-dom";
+import { useTheme, useMediaQuery } from "@mui/material";
 
 export default function Database() {
   const [searchResults, setSearchResults] = useState(data);
   const [currentView, setCurrentView] = useState("Grid");
   const [scrollPosition, setScrollPosition] = useState(0);
   const location = useLocation();
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
   const getInitialSearchTerms = () => {
     const params = new URLSearchParams(location.search);
@@ -96,7 +99,7 @@ export default function Database() {
             <ButtonGroup
               disableElevation
               aria-label="Disabled button group"
-              sx={{ marginLeft: 2 }}
+              sx={{ marginLeft: isMdUp ? 2 : 1 }}
             >
               <Button onClick={() => setCurrentView("Grid")}>
                 <GridViewIcon />

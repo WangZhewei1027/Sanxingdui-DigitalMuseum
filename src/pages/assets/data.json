@@ -162,7 +162,7 @@
   },
   {
     "id": "00000007",
-    "name": "带金面罩青铜人头像",
+    "name": "戴金面罩青铜人头像",
     "nameEN": "Bronze Head Portrait with a Gold Mask",
     "description": "/",
     "descriptionEN": "/",
@@ -185,7 +185,7 @@
   },
   {
     "id": "00000008",
-    "name": "带金面罩青铜人头像",
+    "name": "戴金面罩青铜人头像",
     "nameEN": "Bronze Head Portrait with a Gold Mask",
     "description": "/",
     "descriptionEN": "/",
@@ -1749,8 +1749,8 @@
   },
   {
     "id": "00000096",
-    "name": "二号青铜神树",
-    "nameEN": "Bronze Mythical Tree No.2",
+    "name": "一号青铜神树",
+    "nameEN": "Bronze Mythical Tree No.1",
     "description": "/",
     "descriptionEN": "/",
     "year": "商代后期",

@@ -4,7 +4,6 @@ import {
   AppBar,
   Toolbar,
   IconButton,
-  Typography,
   Drawer,
   Tabs,
   Tab,
@@ -14,6 +13,7 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -21,7 +21,6 @@ import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import DatasetOutlinedIcon from "@mui/icons-material/DatasetOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { useTheme, useMediaQuery } from "@mui/material";
-import { Info } from "@mui/icons-material";
 import Footer from "./components/Footer";
 
 const Layout = () => {
@@ -79,6 +78,11 @@ const Layout = () => {
     }
   };
 
+  const handleClick = () => {
+    setTabValue(0);
+    navigate("/home");
+  };
+
   return (
     <>
       <AppBar
@@ -88,7 +92,7 @@ const Layout = () => {
           backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent black
         }}
       >
-        <Toolbar overflow={"auto"}>
+        <Toolbar>
           <IconButton
             edge="start"
             color="inherit"
@@ -100,7 +104,9 @@ const Layout = () => {
           <Box
             display="flex"
             justifyContent="center"
-            sx={{ marginLeft: 2, marginRight: 2 }}
+            sx={{ marginLeft: 2, marginRight: 2, flexGrow: isMdUp ? 0 : 0.7 }}
+            onClick={handleClick}
+            style={{ cursor: "pointer" }}
           >
             <img
               src="https://industry.map.qq.com/cloud/sanxingdui/pc/home/header-logo.png?imageMogr2/format/webp/ignore-error/1"

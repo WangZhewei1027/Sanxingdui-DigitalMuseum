@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/Sanxingdui-DigitalMuseum/static/js/main.d85d7a8d.js",
+    "main.js": "/Sanxingdui-DigitalMuseum/static/js/main.1a01cb1c.js",
     "static/media/var_4.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_4.e1ddcbe4f0a49b575d35.JPG",
     "static/media/tag.JPG": "/Sanxingdui-DigitalMuseum/static/media/tag.96bbdcd990923e99b676.JPG",
     "static/media/var_2.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_2.1fd1b96356234e04f440.JPG",
@@ -16,9 +16,9 @@
     "static/media/var_11.JPG": "/Sanxingdui-DigitalMuseum/static/media/var_11.ea18aa8f4492f07b8923.JPG",
     "static/media/nyush.png": "/Sanxingdui-DigitalMuseum/static/media/nyush.31cc977874116acd3626.png",
     "index.html": "/Sanxingdui-DigitalMuseum/index.html",
-    "main.d85d7a8d.js.map": "/Sanxingdui-DigitalMuseum/static/js/main.d85d7a8d.js.map"
+    "main.1a01cb1c.js.map": "/Sanxingdui-DigitalMuseum/static/js/main.1a01cb1c.js.map"
   },
   "entrypoints": [
-    "static/js/main.d85d7a8d.js"
+    "static/js/main.1a01cb1c.js"
   ]
 }
