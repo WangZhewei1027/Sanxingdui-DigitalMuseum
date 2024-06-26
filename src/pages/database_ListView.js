@@ -2,7 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Box, Container, Typography, Button } from "@mui/material";
+import { Box, Container, Typography, Button, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
@@ -34,13 +34,23 @@ const ListView = ({ results }) => {
                         borderBottom: "1px solid #F2ECDD",
                         display: "flex",
                         flexDirection: "row",
-                        padding: "20px",
+                        paddingBottom: "15px",
+                        paddingLeft: "20px",
                       }}
                     >
                       <Box sx={{ display: "block", width: "30px" }} />
-                      <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-                        {item.name}
-                      </Typography>
+                      {/* name */}
+                      <Box sx={{ flexDirection: "column" }}>
+                        <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                          {item.name}
+                        </Typography>
+                        <Typography
+                          variant="subtitle2"
+                          sx={{ marginTop: "5px" }}
+                        >
+                          {item.nameEN}
+                        </Typography>
+                      </Box>
                     </Box>
                     <Box
                       sx={{
@@ -56,26 +66,59 @@ const ListView = ({ results }) => {
                           borderRight: "1px solid #F2ECDD",
                         }}
                       />
-                      <Box
-                        sx={{
-                          display: "block",
-                          flexDirection: "column",
-                          padding: "20px",
-                        }}
-                      >
-                        <Box sx={{ marginBottom: "20px" }}>
-                          <Typography variant="h5">{item.year}</Typography>
-                          <Typography
-                            sx={{ marginBottom: "20px" }}
-                            variant="subtitle1"
+                      <Grid container>
+                        {/* Chinese info */}
+                        <Grid item xs={12} md={5}>
+                          <Box
+                            sx={{
+                              display: "block",
+                              flexDirection: "column",
+                              padding: "20px",
+                            }}
                           >
-                            {item.yearDetail}
-                          </Typography>
-                        </Box>
-                        <Typography variant="h6">
-                          {`${item.unearthed}年${item.site}出土`}
-                        </Typography>
-                      </Box>
+                            <Box sx={{ marginBottom: "20px" }}>
+                              <Typography variant="h5">{item.year}</Typography>
+                              <Typography
+                                sx={{ marginBottom: "20px" }}
+                                variant="subtitle1"
+                              >
+                                {item.yearDetail}
+                              </Typography>
+                            </Box>
+                            <Typography variant="subtitle1">
+                              {`${item.unearthed}年${item.site}出土`}
+                            </Typography>
+                          </Box>
+                        </Grid>
+                        {/* English info */}
+                        <Grid item xs={12} md={7}>
+                          <Box
+                            sx={{
+                              display: "block",
+                              flexDirection: "column",
+                              padding: "20px",
+                            }}
+                          >
+                            <Box sx={{ marginBottom: "20px" }}>
+                              <Typography
+                                variant="subtitle1"
+                                sx={{ marginTop: "5px" }}
+                              >
+                                {item.yearEN}
+                              </Typography>
+                              <Typography
+                                sx={{ marginBottom: "25px", marginTop: "4px" }}
+                                variant="subtitle2"
+                              >
+                                {item.yearDetailEN}
+                              </Typography>
+                            </Box>
+                            <Typography variant="subtitle2">
+                              {`Unearthed from ${item.siteEN} in ${item.unearthed}`}
+                            </Typography>
+                          </Box>
+                        </Grid>
+                      </Grid>
                     </Box>
                   </Box>
                 </CardContent>
