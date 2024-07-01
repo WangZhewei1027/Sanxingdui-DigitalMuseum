@@ -60,7 +60,7 @@ const Detail = () => {
 
   let content;
 
-  if (item.luma) {
+  if (item.luma != "/") {
     content = (
       <iframe
         src={`${item.luma}?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false`}
@@ -79,7 +79,7 @@ const Detail = () => {
     } catch (error) {
       content = (
         <Card sx={{ height: "100%" }}>
-          <CardContent></CardContent>
+          <CardContent>No luma</CardContent>
         </Card>
       );
     }
@@ -217,7 +217,7 @@ const Detail = () => {
                         />
                         <MyCard
                           text={item.material}
-                          caption="类别"
+                          caption="材质"
                           fontSize={isMd ? "h6" : "h4"}
                         />
                       </Box>

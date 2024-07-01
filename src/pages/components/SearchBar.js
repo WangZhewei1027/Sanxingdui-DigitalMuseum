@@ -14,17 +14,11 @@ const SearchBar = ({ onSearch, data, initialSearchTerms = [] }) => {
     ...data.map((item) => ({ type: "item", label: item.name })),
   ];
 
-  const getFilteredOptions = (combinedOptions, selectedTags) => {
-    return combinedOptions.filter((option) => {
-      return !selectedTags.includes(option.label);
-    });
-  };
-
   const handleInputChange = (event, value) => {
-    const selectedTags = value.map((v) => (v.label ? v.label : v));
-    setSelectedTags(selectedTags);
-    onSearch(selectedTags);
-    const queryString = selectedTags
+    const newSelectedTags = value.map((v) => (v.label ? v.label : v));
+    setSelectedTags(newSelectedTags);
+    onSearch(newSelectedTags);
+    const queryString = newSelectedTags
       .map((tag) => `tags=${encodeURIComponent(tag)}`)
       .join("&");
     navigate(`?${queryString}`);
@@ -38,24 +32,25 @@ const SearchBar = ({ onSearch, data, initialSearchTerms = [] }) => {
   return (
     <Autocomplete
       multiple
-      options={getFilteredOptions(combinedOptions, selectedTags)}
+      options={combinedOptions}
       freeSolo
-      getOptionLabel={(option) => (option.label ? option.label : option)}
-      filterOptions={(options, state) => {
-        return options.filter((option) =>
+      getOptionLabel={(option) => option.label || option}
+      filterSelectedOptions
+      filterOptions={(options, state) =>
+        options.filter((option) =>
           option.label.toLowerCase().includes(state.inputValue.toLowerCase())
-        );
-      }}
-      onChange={(event, value) => handleInputChange(event, value)}
+        )
+      }
+      onChange={handleInputChange}
       value={selectedTags.map((tag) => ({ label: tag }))}
       renderTags={(value, getTagProps) =>
         value.map((option, index) => {
           const { key, ...tagProps } = getTagProps({ index });
           return (
             <Chip
-              key={option.label ? option.label : option}
+              key={option.label || option}
               variant="outlined"
-              label={option.label ? option.label : option}
+              label={option.label || option}
               {...tagProps}
               sx={
                 tags.includes(option.label)
@@ -66,22 +61,19 @@ const SearchBar = ({ onSearch, data, initialSearchTerms = [] }) => {
           );
         })
       }
-      renderOption={(props, option) => {
-        const { key, ...optionProps } = props;
-        return (
-          <Box
-            component="li"
-            key={Math.random().toString(36).substr(2, 9)}
-            {...optionProps}
-            sx={{ display: "flex", alignItems: "center" }}
-          >
-            {option.type === "tag" && (
-              <Chip label="Tag" size="small" sx={{ mr: 1 }} />
-            )}
-            <Typography variant="body1">{option.label}</Typography>
-          </Box>
-        );
-      }}
+      renderOption={(props, option) => (
+        <Box
+          component="li"
+          key={Math.random().toString(36).substr(2, 9)}
+          {...props}
+          sx={{ display: "flex", alignItems: "center" }}
+        >
+          {option.type === "tag" && (
+            <Chip label="Tag" size="small" sx={{ mr: 1 }} />
+          )}
+          <Typography variant="body1">{option.label}</Typography>
+        </Box>
+      )}
       renderInput={(params) => (
         <TextField {...params} variant="outlined" label="搜索藏品" fullWidth />
       )}

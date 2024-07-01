@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { useTheme, useMediaQuery, Fade, Skeleton } from "@mui/material";
 import Footer from "./components/Footer";
+import { useEffect } from "react";
 
 export default function MyImageList({ results }) {
   const navigate = useNavigate();
@@ -31,6 +32,14 @@ export default function MyImageList({ results }) {
   const handleImageLoad = (id) => {
     setLoadedImages((prevState) => ({ ...prevState, [id]: true }));
   };
+
+  useEffect(
+    (id) => {
+      // Reset loaded images when results change to ensure proper reloading
+      setLoadedImages((prevState) => ({ ...prevState, [id]: false }));
+    },
+    [results]
+  );
 
   return (
     <>
@@ -98,9 +107,18 @@ export default function MyImageList({ results }) {
           </ImageList>
         ) : (
           <Fade in={true}>
-            <Typography variant="h6" align="center">
-              No results
-            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "100px",
+              }}
+            >
+              <Typography variant="h5" align="center">
+                No results
+              </Typography>
+            </Box>
           </Fade>
         )}
       </Box>
