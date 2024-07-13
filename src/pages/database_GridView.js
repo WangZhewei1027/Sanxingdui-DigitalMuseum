@@ -4,7 +4,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import Typography from "@mui/material/Typography";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme, useMediaQuery, Fade, Skeleton } from "@mui/material";
 import Footer from "./components/Footer";
 import { useEffect } from "react";
@@ -16,6 +16,7 @@ export default function MyImageList({ results }) {
 
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
+  const location = useLocation();
 
   const handleImageClick = (id) => {
     navigate(`/database/${id}`);
@@ -30,15 +31,16 @@ export default function MyImageList({ results }) {
   };
 
   const handleImageLoad = (id) => {
-    setLoadedImages((prevState) => ({ ...prevState, [id]: true }));
+    setLoadedImages((prevState) => ({ ...prevState, id: true }));
   };
 
   useEffect(
     (id) => {
       // Reset loaded images when results change to ensure proper reloading
-      setLoadedImages((prevState) => ({ ...prevState, [id]: false }));
+      setLoadedImages({});
+      console.log("Reset!");
     },
-    [results]
+    [results, location]
   );
 
   return (
@@ -47,62 +49,60 @@ export default function MyImageList({ results }) {
         {results.length > 0 ? (
           <ImageList variant="masonry" cols={isMdUp ? 5 : 2} gap={20}>
             {results.map((item) => (
-              <Fade in={true} key={item.id}>
-                <ImageListItem
-                  onClick={() => handleImageClick(item.id)}
-                  onMouseEnter={() => handleMouseEnter(item.id)}
-                  onMouseLeave={handleMouseLeave}
-                  style={{ cursor: "pointer" }}
+              <ImageListItem
+                key={item.id}
+                onClick={() => handleImageClick(item.id)}
+                onMouseEnter={() => handleMouseEnter(item.id)}
+                onMouseLeave={handleMouseLeave}
+                style={{ cursor: "pointer" }}
+              >
+                <Box
+                  sx={{
+                    width: "100%",
+                    position: "relative",
+                    paddingBottom: item.ratio === "C" ? "150%" : "66.67%",
+                  }}
                 >
-                  <Box
-                    sx={{
-                      width: "100%",
-                      position: "relative",
-                      paddingBottom: item.ratio === "C" ? "150%" : "66.67%",
-                    }}
-                  >
-                    {!loadedImages[item.id] && (
-                      <Skeleton
-                        variant="rectangular"
-                        sx={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      />
-                    )}
-                    <Fade in={loadedImages[item.id]}>
-                      <img
-                        src={require(`./assets/pics/${item.id}_${item.name}/main.JPG`)}
-                        alt={item.name}
-                        loading="lazy"
-                        style={{
-                          display: loadedImages[item.id] ? "block" : "none",
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                        }}
-                        onLoad={() => handleImageLoad(item.id)}
-                      />
-                    </Fade>
-                  </Box>
-                  {!loadedImages[item.id] ? (
+                  {!loadedImages[item.id] && (
                     <Skeleton
-                      variant="text"
-                      sx={{ height: 42, width: "120px" }}
+                      variant="rectangular"
+                      sx={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                      }}
                     />
-                  ) : (
-                    <Fade in={loadedImages[item.id]}>
-                      <ImageListItemBar position="below" title={item.name} />
-                    </Fade>
                   )}
-                </ImageListItem>
-              </Fade>
+
+                  <img
+                    src={require(`./assets/pics/${item.id}_${item.name}/main.JPG`)}
+                    alt={item.name}
+                    loading="lazy"
+                    style={{
+                      // display: loadedImages[item.id] ? "block" : "none",
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                    onLoad={() => handleImageLoad(item.id)}
+                  />
+                </Box>
+                {!loadedImages[item.id] ? (
+                  <Skeleton
+                    variant="text"
+                    sx={{ height: 42, width: "120px" }}
+                  />
+                ) : (
+                  <Fade in={loadedImages[item.id]}>
+                    <ImageListItemBar position="below" title={item.name} />
+                  </Fade>
+                )}
+              </ImageListItem>
             ))}
           </ImageList>
         ) : (

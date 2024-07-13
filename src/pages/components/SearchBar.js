@@ -61,19 +61,22 @@ const SearchBar = ({ onSearch, data, initialSearchTerms = [] }) => {
           );
         })
       }
-      renderOption={(props, option) => (
-        <Box
-          component="li"
-          key={Math.random().toString(36).substr(2, 9)}
-          {...props}
-          sx={{ display: "flex", alignItems: "center" }}
-        >
-          {option.type === "tag" && (
-            <Chip label="Tag" size="small" sx={{ mr: 1 }} />
-          )}
-          <Typography variant="body1">{option.label}</Typography>
-        </Box>
-      )}
+      renderOption={(props, option) => {
+        const { key, ...optionProps } = props;
+        return (
+          <Box
+            key={`${Math.random()}`}
+            component="li"
+            {...optionProps}
+            sx={{ display: "flex", alignItems: "center" }}
+          >
+            {option.type === "tag" && (
+              <Chip label="Tag" size="small" sx={{ mr: 1 }} />
+            )}
+            <Typography variant="body1">{option.label}</Typography>
+          </Box>
+        );
+      }}
       renderInput={(params) => (
         <TextField {...params} variant="outlined" label="搜索藏品" fullWidth />
       )}

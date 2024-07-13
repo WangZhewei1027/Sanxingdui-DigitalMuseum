@@ -79,6 +79,10 @@ export default function Database() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            // position: "-webkit-sticky",
+            // position: "sticky",
+            // top: "90px",
+            // zIndex: "10",
           }}
         >
           <Box

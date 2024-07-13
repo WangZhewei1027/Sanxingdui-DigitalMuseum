@@ -50,7 +50,14 @@ function HomePage() {
           </Typography>
           <Grid container spacing={4}>
             <Grid item xs={12} md={4}>
-              <Card>
+              <Card
+                sx={{
+                  transition: "transform 0.3s ease-in-out",
+                  ":hover": {
+                    transform: "perspective(500px) translateZ(50px)",
+                  },
+                }}
+              >
                 <CardMedia
                   component="img"
                   image={require("./assets/pics/00000071_青铜面具/main.JPG")}
