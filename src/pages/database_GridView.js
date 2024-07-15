@@ -31,17 +31,18 @@ export default function MyImageList({ results }) {
   };
 
   const handleImageLoad = (id) => {
-    setLoadedImages((prevState) => ({ ...prevState, id: true }));
+    setLoadedImages((prevState) => ({ ...prevState, [id]: true }));
+    console.log(loadedImages);
   };
 
-  useEffect(
-    (id) => {
-      // Reset loaded images when results change to ensure proper reloading
-      setLoadedImages({});
-      console.log("Reset!");
-    },
-    [results, location]
-  );
+  // useEffect(
+  //   (id) => {
+  //     // Reset loaded images when results change to ensure proper reloading
+  //     setLoadedImages({});
+  //     console.log("Reset!");
+  //   },
+  //   [results, location]
+  // );
 
   return (
     <>
