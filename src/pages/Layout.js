@@ -123,8 +123,7 @@ const Layout = () => {
           )}
         </Toolbar>
       </AppBar>
-      <Toolbar sx={{ marginTop: 3 }} />
-      {/* This ensures content is not hidden under the fixed AppBar */}
+      <Box sx={{ height: "64px" }} />
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         <Box
           sx={{ width: 250 }}

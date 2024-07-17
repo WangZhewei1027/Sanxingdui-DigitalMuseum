@@ -77,11 +77,7 @@ const Detail = () => {
         <PhotoAlbum pathName={`${item.id}_${item.name}`} main={false} />
       );
     } catch (error) {
-      content = (
-        <Card sx={{ height: "100%" }}>
-          <CardContent>No luma</CardContent>
-        </Card>
-      );
+      content = <Card sx={{ height: "100%" }}></Card>;
     }
   }
 
