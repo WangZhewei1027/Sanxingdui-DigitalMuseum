@@ -17,6 +17,9 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "Noto Serif SC",
+    h1: {
+      fontFamily: "Gideon Roman",
+    },
   },
 });
 
