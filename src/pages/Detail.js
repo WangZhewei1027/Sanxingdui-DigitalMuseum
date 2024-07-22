@@ -17,11 +17,11 @@ import { useTheme, useMediaQuery } from "@mui/material";
 import Footer from "./components/Footer";
 
 const myStyle = {
-  boxShadow: " 0px 1px 5px -0.5px rgba(245, 203, 92,0.8)",
+  boxShadow: " 0px 1px 2px 0px rgba(245, 203, 92,0.8)",
   borderRadius: 4,
-  backgroundColor: "rgba(0,0,0,0.7)",
+  backgroundColor: "rgba(0,0,0,0.68)",
   ":hover": {
-    boxShadow: " 0px 2px 8px -0.5px rgba(245, 203, 92,0.8)",
+    boxShadow: " 0px 2px 7px 0px rgba(245, 203, 92,0.8)",
   },
 };
 
@@ -208,6 +208,7 @@ const Detail = () => {
                             width: "100%",
                             height: "100%",
                             position: "relative", // Ensure the Box is a positioned container
+                            transition: "box-shadow 0.5s",
                             ...myStyle,
                           }}
                         >

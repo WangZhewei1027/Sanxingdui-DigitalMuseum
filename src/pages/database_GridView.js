@@ -61,6 +61,12 @@ export default function MyImageList({ results }) {
                 onMouseEnter={() => handleMouseEnter(item.id)}
                 onMouseLeave={handleMouseLeave}
                 style={{ cursor: "pointer" }}
+                sx={{
+                  transition: "transform 0.5s ease",
+                  ":hover": {
+                    transform: "scale(1.1)",
+                  },
+                }}
               >
                 <Box
                   sx={{
@@ -105,7 +111,11 @@ export default function MyImageList({ results }) {
                   />
                 ) : (
                   <Fade in={loadedImages[item.id]}>
-                    <ImageListItemBar position="below" title={item.name} />
+                    <ImageListItemBar
+                      position="below"
+                      title={item.name}
+                      sx={{ fontWeight: "bold" }}
+                    />
                   </Fade>
                 )}
               </ImageListItem>
