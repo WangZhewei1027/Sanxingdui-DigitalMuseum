@@ -49,7 +49,6 @@ function HomePage() {
           backgroundImage: `url(${require("./assets/opening.jpg")})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          borderRadius: "16px",
         }}
       >
         <Container>
@@ -84,7 +83,6 @@ function HomePage() {
                 // backgroundImage: `url(${require("./assets/test.png")})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                borderRadius: "16px",
               }}
             ></Box>
           </Box>
@@ -102,7 +100,6 @@ function HomePage() {
           backgroundImage: `url(${require("./assets/opening2.jpg")})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          borderRadius: "16px",
         }}
       >
         <Container>
@@ -138,7 +135,6 @@ function HomePage() {
                 flexGrow: 1,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                borderRadius: "16px",
               }}
             ></Box>
           </Box>

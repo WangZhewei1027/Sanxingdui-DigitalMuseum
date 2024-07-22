@@ -17,9 +17,12 @@ import { useTheme, useMediaQuery } from "@mui/material";
 import Footer from "./components/Footer";
 
 const myStyle = {
-  boxShadow: " 0px 2px 8px -0.5px rgba(245, 203, 92,0.8)",
+  boxShadow: " 0px 1px 5px -0.5px rgba(245, 203, 92,0.8)",
   borderRadius: 4,
   backgroundColor: "rgba(0,0,0,0.7)",
+  ":hover": {
+    boxShadow: " 0px 2px 8px -0.5px rgba(245, 203, 92,0.8)",
+  },
 };
 
 function MyCard({ text, caption, fontSize }) {
@@ -202,7 +205,6 @@ const Detail = () => {
                       <Grid item xs={8} md={8}>
                         <Box
                           sx={{
-                            display: "block",
                             width: "100%",
                             height: "100%",
                             position: "relative", // Ensure the Box is a positioned container
