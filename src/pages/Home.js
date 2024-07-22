@@ -116,6 +116,58 @@ function HomePage() {
         </Container>
       </Box>
 
+      <Container>
+        <Typography align="center" variant="h2" fontWeight={"bold"} my={4}>
+          精选文物
+        </Typography>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            position: "relative",
+            justifyContent: "space-between",
+            height: "560px",
+            alignItems: "center",
+
+            backgroundImage:
+              "radial-gradient(rgb(30,40,30) 30%, rgb(18,18,18) 60%)",
+          }}
+        >
+          {pics.map((pic, index) => {
+            const marginLeft = index === 0 ? 0 : -64;
+            const distance = Math.abs(selectedIndex - index);
+            const zIndex = selectedIndex - distance + 100; // Ensure zIndex is positive
+
+            return (
+              <Box
+                component="img"
+                src={require(`./assets/pics/${pic}`)}
+                key={pic}
+                sx={{
+                  width: "350px",
+                  height: "500px",
+                  objectFit: "cover",
+                  ...myStyle,
+                  marginLeft: marginLeft,
+                  zIndex: zIndex,
+                  position: "relative", // Ensure the images are positioned correctly
+                  transition:
+                    "transform 1s ease-in-out, box-shadow 1s ease-in-out",
+                  transform: `scale(${1 - distance * 0.1})`,
+                  cursor: "pointer",
+                }}
+                onMouseEnter={() => {
+                  console.log(`Mouse entered on image index: ${index}`);
+                  setSelectedIndex(index);
+                }}
+                onClick={() => handleClick(pic.substring(0, 8))}
+              />
+            );
+          })}
+        </Box>
+      </Container>
+
       {/* Part 2 */}
       <Box
         sx={{
@@ -173,9 +225,8 @@ function HomePage() {
           backgroundColor: "rgb(23,23,23)",
           display: "flex",
           height: "650px",
-          alignItems: "center",
 
-          backgroundImage: `url(${require("./assets/opening2.jpg")})`,
+          backgroundImage: `url(${require("./assets/opening3.jpg")})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -183,56 +234,7 @@ function HomePage() {
         <Preface />
       </Box>
 
-      <Container>
-        <Typography align="center" variant="h2" fontWeight={"bold"} my={4}>
-          精选文物
-        </Typography>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            position: "relative",
-            justifyContent: "space-between",
-            height: "560px",
-            alignItems: "center",
-            cursor: "pointer",
-          }}
-        >
-          {pics.map((pic, index) => {
-            const marginLeft = index === 0 ? 0 : -64;
-            const distance = Math.abs(selectedIndex - index);
-            const zIndex = selectedIndex - distance + 100; // Ensure zIndex is positive
-
-            return (
-              <Box
-                component="img"
-                src={require(`./assets/pics/${pic}`)}
-                key={pic}
-                sx={{
-                  width: "350px",
-                  height: "500px",
-                  objectFit: "cover",
-                  ...myStyle,
-                  marginLeft: marginLeft,
-                  zIndex: zIndex,
-                  position: "relative", // Ensure the images are positioned correctly
-                  transition:
-                    "transform 1s ease-in-out, box-shadow 1s ease-in-out",
-                  transform: `scale(${1 - distance * 0.1})`,
-                }}
-                onMouseEnter={() => {
-                  console.log(`Mouse entered on image index: ${index}`);
-                  setSelectedIndex(index);
-                }}
-                onClick={() => handleClick(pic.substring(0, 8))}
-              />
-            );
-          })}
-        </Box>
-      </Container>
-
-      <Section>
+      {/* <Section>
         <Card>
           <CardContent>
             <Typography variant="h4" gutterBottom>
@@ -256,7 +258,7 @@ function HomePage() {
             </Typography>
           </CardContent>
         </Card>
-      </Section>
+      </Section> */}
     </>
   );
 }
