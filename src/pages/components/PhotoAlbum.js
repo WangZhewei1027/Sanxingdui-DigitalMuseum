@@ -46,7 +46,7 @@ const PhotoAlbum = ({ item }) => {
 
   return (
     <Carousel
-      autoPlay={true}
+      autoPlay={false}
       height="100%"
       indicatorContainerProps={{
         style: {

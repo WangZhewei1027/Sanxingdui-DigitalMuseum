@@ -71,12 +71,13 @@ const Detail = () => {
         backgroundImage: "radial-gradient(rgb(30,40,30) 5%, rgb(18,18,18) 60%)",
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ overflow: "overlay" }}>
         <Box height={"16px"} />
         <Grid
           container
           spacing={2}
           sx={{ display: "flex", alignItems: "stretch" }}
+          marginBottom={4}
         >
           {item ? (
             <>

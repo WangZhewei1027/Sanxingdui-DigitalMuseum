@@ -46,9 +46,14 @@ export default function MyImageList({ results }) {
 
   return (
     <>
-      <Box sx={{ overflowY: "scroll", height: "100%" }}>
+      <Box sx={{ height: "100%" }}>
         {results.length > 0 ? (
-          <ImageList variant="masonry" cols={isMdUp ? 5 : 2} gap={20}>
+          <ImageList
+            variant="masonry"
+            cols={isMdUp ? 5 : 2}
+            gap={20}
+            sx={{ overflow: "hidden" }}
+          >
             {results.map((item) => (
               <ImageListItem
                 key={item.id}

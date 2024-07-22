@@ -7,7 +7,6 @@ function Footer() {
     <Box
       sx={{
         py: 3,
-        mt: 4,
         textAlign: "center",
         backgroundColor: "rgb(23,23,23)",
       }}
