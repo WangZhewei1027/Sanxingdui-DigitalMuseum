@@ -141,9 +141,6 @@ function HomePage() {
 
             return (
               <Box
-                component="img"
-                src={require(`./assets/pics/${pic}`)}
-                key={pic}
                 sx={{
                   width: "350px",
                   height: "500px",
@@ -156,13 +153,29 @@ function HomePage() {
                     "transform 1s ease-in-out, box-shadow 1s ease-in-out",
                   transform: `scale(${1 - distance * 0.1})`,
                   cursor: "pointer",
+                  backgroundColor: "rgba(0,0,0,1)",
                 }}
                 onMouseEnter={() => {
                   console.log(`Mouse entered on image index: ${index}`);
                   setSelectedIndex(index);
                 }}
                 onClick={() => handleClick(pic.substring(0, 8))}
-              />
+              >
+                <img
+                  src={require(`./assets/pics/${pic}`)}
+                  key={pic}
+                  position={"absolute"}
+                  left={0}
+                  right={0}
+                  width={"100%"}
+                  height={"100%"}
+                  style={{
+                    borderRadius: 16,
+                    transition: "opacity 1s",
+                    opacity: 1 - 0.2 * distance,
+                  }}
+                />
+              </Box>
             );
           })}
         </Box>
