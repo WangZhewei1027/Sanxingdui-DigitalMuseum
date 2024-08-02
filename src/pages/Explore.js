@@ -2,15 +2,20 @@ import React from "react";
 import { Box } from "@mui/material";
 import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-import ThreeCube from "./components/ThreeCube";
+import DigitalSanxingdui from "./components/DigitalSanxingdui";
+import { Canvas } from "@react-three/fiber";
+import MainTitle from "./components/MainTitle";
 
 function ExplorePage() {
-  const navigate = useNavigate();
-
   return (
-    <>
-      <ThreeCube />
-    </>
+    <Box>
+      <div id="canvas-container" style={{ height: "100%" }}>
+        <DigitalSanxingdui />
+      </div>
+      <div id="canvas-container" style={{ height: "100%" }}>
+        <MainTitle />
+      </div>
+    </Box>
   );
 }
 

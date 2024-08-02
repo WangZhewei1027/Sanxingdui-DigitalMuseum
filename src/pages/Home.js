@@ -14,6 +14,7 @@ import Preface from "./components/Preface";
 import { css, keyframes } from "@emotion/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import MainTitle from "./components/MainTitle";
 
 const myStyle = {
   boxShadow: " 0px 1px 1px 0px rgba(245, 203, 92,0.8)",
@@ -72,13 +73,28 @@ function HomePage() {
           display: "flex",
           height: "650px",
           alignItems: "center",
+          position: "relative",
 
-          backgroundImage: `url(${require("./assets/opening.jpg")})`,
+          backgroundImage: `url(${require("./assets/opening-alt.webp")})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
+        <div
+          id="canvas-container"
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <MainTitle />
+        </div>
+        {/* <ScriptTag type="text/javascript" src="./components/Particles.js" /> */}
         <Container>
+          <script src="src/pages/components/Particles.js"></script>
           <Box
             sx={{
               display: "flex",
@@ -88,7 +104,7 @@ function HomePage() {
             }}
           >
             {/* Left */}
-            <Box
+            {/* <Box
               sx={{
                 flexGrow: 1,
               }}
@@ -102,7 +118,7 @@ function HomePage() {
                 三星堆博物馆展示了丰富的历史文物和神秘文化<br></br>
                 欢迎您前来参观
               </Typography>
-            </Box>
+            </Box> */}
             {/* Right */}
             <Box
               sx={{
