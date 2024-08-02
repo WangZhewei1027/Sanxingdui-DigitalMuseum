@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Autocomplete, TextField, Chip, Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import ui from "../assets/ui.json";
+import { LanguageContext } from "../Layout";
 
 const SearchBar = ({ onSearch, data, initialSearchTerms = [] }) => {
+  const Language = useContext(LanguageContext);
   const [selectedTags, setSelectedTags] = useState(initialSearchTerms);
   const navigate = useNavigate();
 
@@ -78,7 +81,12 @@ const SearchBar = ({ onSearch, data, initialSearchTerms = [] }) => {
         );
       }}
       renderInput={(params) => (
-        <TextField {...params} variant="outlined" label="搜索藏品" fullWidth />
+        <TextField
+          {...params}
+          variant="outlined"
+          label={ui.searchArtifacts[Language]}
+          fullWidth
+        />
       )}
       sx={{ width: "100%" }}
     />

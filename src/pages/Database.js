@@ -18,6 +18,8 @@ import Slide from "@mui/material/Slide";
 import Footer from "./components/Footer";
 import { useLocation } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
+import { useContext } from "react";
+import { LanguageContext } from "./Layout";
 
 export default function Database() {
   const [searchResults, setSearchResults] = useState(data);
@@ -26,6 +28,7 @@ export default function Database() {
   const location = useLocation();
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
+  const Language = useContext(LanguageContext);
 
   const getInitialSearchTerms = () => {
     const params = new URLSearchParams(location.search);

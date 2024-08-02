@@ -22,6 +22,11 @@ import DatasetOutlinedIcon from "@mui/icons-material/DatasetOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { useTheme, useMediaQuery } from "@mui/material";
 import Footer from "./components/Footer";
+import ui from "./assets/ui.json";
+import LanguageButton from "./components/Language";
+import { createContext } from "react";
+
+export const LanguageContext = createContext(null);
 
 const Layout = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -30,6 +35,7 @@ const Layout = () => {
   const location = useLocation();
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
+  const [Language, setLanguage] = useState("en");
 
   useEffect(() => {
     if (location.pathname.startsWith("/database/")) {
@@ -83,8 +89,12 @@ const Layout = () => {
     navigate("/home");
   };
 
+  const handleLanguageChange = (Language) => {
+    setLanguage(Language);
+  };
+
   return (
-    <>
+    <LanguageContext.Provider value={Language}>
       <AppBar
         position="fixed"
         sx={{
@@ -104,7 +114,7 @@ const Layout = () => {
           <Box
             display="flex"
             justifyContent="center"
-            sx={{ marginLeft: 2, marginRight: 2, flexGrow: isMdUp ? 0 : 0.7 }}
+            sx={{ marginLeft: 2, marginRight: 2, flexGrow: isMdUp ? 0 : 1 }}
             onClick={handleClick}
             style={{ cursor: "pointer" }}
           >
@@ -116,11 +126,15 @@ const Layout = () => {
           </Box>
           {isMdUp && (
             <Tabs value={tabValue} onChange={handleTabChange}>
-              <Tab label="主页" />
-              <Tab label="探索" />
-              <Tab label="数据库" />
+              <Tab label={ui.home[Language]} />
+              <Tab label={ui.explore[Language]} />
+              <Tab label={ui.database[Language]} />
             </Tabs>
           )}
+          <LanguageButton
+            onLanguageChange={handleLanguageChange}
+            style={{ position: "absolute", right: "16px" }}
+          />
         </Toolbar>
       </AppBar>
       <Box sx={{ height: "64px" }} />
@@ -146,7 +160,7 @@ const Layout = () => {
                 sx={{ height: 60 }}
               >
                 <HomeOutlinedIcon sx={{ marginRight: 1 }} />
-                <ListItemText primary="主页" />
+                <ListItemText primary={ui.home[Language]} />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
@@ -157,7 +171,7 @@ const Layout = () => {
                 sx={{ height: 60 }}
               >
                 <ExploreOutlinedIcon sx={{ marginRight: 1 }} />
-                <ListItemText primary="探索" />
+                <ListItemText primary={ui.explore[Language]} />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
@@ -168,7 +182,7 @@ const Layout = () => {
                 sx={{ height: 60 }}
               >
                 <DatasetOutlinedIcon sx={{ marginRight: 1 }} />
-                <Typography>数据库</Typography>
+                <Typography>{ui.database[Language]} </Typography>
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
@@ -178,7 +192,7 @@ const Layout = () => {
                 sx={{ height: 60 }}
               >
                 <InfoOutlinedIcon sx={{ marginRight: 1 }} />
-                <Typography>关于我们</Typography>
+                <Typography>{ui.aboutUs[Language]} </Typography>
               </ListItemButton>
             </ListItem>
           </List>
@@ -188,7 +202,7 @@ const Layout = () => {
         <Outlet />
       </Box>
       <Footer />
-    </>
+    </LanguageContext.Provider>
   );
 };
 

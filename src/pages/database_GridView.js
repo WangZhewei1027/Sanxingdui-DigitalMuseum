@@ -8,8 +8,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme, useMediaQuery, Fade, Skeleton } from "@mui/material";
 import Footer from "./components/Footer";
 import { useEffect } from "react";
+import { LanguageContext } from "./Layout";
+import { useContext } from "react";
 
 export default function MyImageList({ results }) {
+  const Language = useContext(LanguageContext);
   const navigate = useNavigate();
   const [hoveredItem, setHoveredItem] = useState(null);
   const [loadedImages, setLoadedImages] = useState({});
@@ -107,7 +110,7 @@ export default function MyImageList({ results }) {
                   <Fade in={loadedImages[item.id]}>
                     <ImageListItemBar
                       position="below"
-                      title={item.name}
+                      title={Language === "en" ? item.nameEN : item.name}
                       sx={{ fontWeight: "bold" }}
                     />
                   </Fade>

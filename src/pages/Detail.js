@@ -15,6 +15,7 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import PhotoAlbum from "./components/PhotoAlbum";
 import { useTheme, useMediaQuery } from "@mui/material";
 import Footer from "./components/Footer";
+import { LanguageContext } from "./Layout";
 
 const myStyle = {
   boxShadow: " 0px 1px 2px 0px rgba(245, 203, 92,0.8)",
@@ -63,6 +64,8 @@ const Detail = () => {
   const item = data.find((item) => item.id === id);
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.down("md"));
+
+  const Language = React.useContext(LanguageContext);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -120,7 +123,7 @@ const Detail = () => {
                           align="center"
                           sx={{ fontWeight: "bold" }}
                         >
-                          {item.name}
+                          {Language === "zh" ? item.name : item.nameEN}
                         </Typography>
                       </Box>
                     </CardContent>
@@ -185,7 +188,7 @@ const Detail = () => {
                           height={"100%"}
                         >
                           <MyCard
-                            text={item.year}
+                            text={Language === "zh" ? item.year : item.yearEN}
                             caption="年代"
                             fontSize={isMd ? "h6" : "h4"}
                           />

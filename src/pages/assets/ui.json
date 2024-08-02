@@ -1,0 +1,22 @@
+{
+    "home": {
+        "en": "Home",
+        "zh": "首页"
+    },
+    "explore": {
+        "en": "Explore",
+        "zh": "探索"
+    },
+    "database": {
+        "en": "Database",
+        "zh": "数据库"
+    },
+    "aboutUs": {
+        "en": "About Us",
+        "zh": "关于我们"
+    },
+    "searchArtifacts": {
+        "en": "Search Artifacts",
+        "zh": "搜索文物"
+    }
+}

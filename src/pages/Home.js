@@ -15,6 +15,7 @@ import { css, keyframes } from "@emotion/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MainTitle from "./components/MainTitle";
+import { LanguageButton } from "./components/Language";
 
 const myStyle = {
   boxShadow: " 0px 1px 1px 0px rgba(245, 203, 92,0.8)",
