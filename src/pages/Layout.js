@@ -111,19 +111,34 @@ const Layout = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Box
-            display="flex"
-            justifyContent="center"
-            sx={{ marginLeft: 2, marginRight: 2, flexGrow: isMdUp ? 0 : 1 }}
-            onClick={handleClick}
-            style={{ cursor: "pointer" }}
-          >
+          {isMdUp && (
+            <Box
+              display="flex"
+              justifyContent="center"
+              sx={{ marginLeft: 2, marginRight: 2, flexGrow: isMdUp ? 0 : 1 }}
+              onClick={handleClick}
+              style={{ cursor: "pointer" }}
+            >
+              <img
+                src="https://industry.map.qq.com/cloud/sanxingdui/pc/home/header-logo.png?imageMogr2/format/webp/ignore-error/1"
+                alt="Logo"
+                style={{ maxHeight: "40px", width: "auto" }}
+              />
+            </Box>
+          )}
+          {!isMdUp && (
             <img
               src="https://industry.map.qq.com/cloud/sanxingdui/pc/home/header-logo.png?imageMogr2/format/webp/ignore-error/1"
               alt="Logo"
-              style={{ maxHeight: "40px", width: "auto" }}
+              style={{
+                maxHeight: "40px",
+                width: "auto",
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
+              }}
             />
-          </Box>
+          )}
           {isMdUp && (
             <Tabs value={tabValue} onChange={handleTabChange}>
               <Tab label={ui.home[Language]} />
