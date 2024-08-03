@@ -26,36 +26,37 @@ const myStyle = {
   },
 };
 
-function MyCard({ text, caption, fontSize }) {
+function MyCard({ text, caption, fontSize, ...props }) {
   return (
-    <React.Fragment>
-      <Card
-        sx={{
-          display: "flex",
-          flexGrow: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100%",
-          ...myStyle,
-        }}
-      >
-        <CardContent>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Typography variant={fontSize}>{text}</Typography>
-            <Typography variant="caption" sx={{ mt: 2 }}>
-              {caption}
-            </Typography>
-          </Box>
-        </CardContent>
-      </Card>
-    </React.Fragment>
+    <Card
+      sx={{
+        display: "flex",
+        flexGrow: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%",
+        ...myStyle,
+        ...props,
+      }}
+    >
+      <CardContent>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography variant={fontSize} align={"center"}>
+            {text}
+          </Typography>
+          <Typography variant="caption" sx={{ mt: 2 }}>
+            {caption}
+          </Typography>
+        </Box>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -66,6 +67,9 @@ const Detail = () => {
   const isMdDown = useMediaQuery(theme.breakpoints.down("md"));
 
   const Language = React.useContext(LanguageContext);
+
+  const myCardTextFontSize =
+    Language === "zh" ? (isMdDown ? "h6" : "h4") : isMdDown ? "h7" : "h5";
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -119,7 +123,15 @@ const Detail = () => {
                         }}
                       >
                         <Typography
-                          variant={isMdDown ? "h3" : "h2"}
+                          variant={
+                            Language === "zh"
+                              ? isMdDown
+                                ? "h3"
+                                : "h2"
+                              : isMdDown
+                              ? "h5"
+                              : "h4"
+                          }
                           align="center"
                           sx={{ fontWeight: "bold" }}
                         >
@@ -143,7 +155,7 @@ const Detail = () => {
 
                   <Card
                     sx={{
-                      display: "flex",
+                      display: item.dimension != "/" ? "flex" : "none",
                       alignItems: "center",
                       justifyContent: "center",
                       ...myStyle,
@@ -158,7 +170,17 @@ const Detail = () => {
                           justifyContent: "center",
                         }}
                       >
-                        <Typography variant={isMdDown ? "h7" : "h6"}>
+                        <Typography
+                          variant={
+                            Language === "zh"
+                              ? isMdDown
+                                ? "h7"
+                                : "h6"
+                              : isMdDown
+                              ? "h7"
+                              : "h7"
+                          }
+                        >
                           {Language === "zh"
                             ? item.dimension
                             : item.dimensionEN}
@@ -180,20 +202,20 @@ const Detail = () => {
                   sx={{ height: "100%" }}
                   gap={2}
                 >
-                  {/* Right Middle */}
                   <Box display={"flex"} flexGrow={4}>
                     <Grid container spacing={2}>
                       <Grid item xs={12} md={4}>
                         <Box
                           display={"flex"}
-                          flexDirection={"Column"}
+                          flexDirection={isMdDown ? "row" : "column"}
                           gap={2}
                           height={"100%"}
                         >
                           <MyCard
                             text={Language === "zh" ? item.year : item.yearEN}
                             caption={Language === "zh" ? "年代" : "Year"}
-                            fontSize={isMdDown ? "h6" : "h4"}
+                            fontSize={myCardTextFontSize}
+                            width={"100%"}
                           />
                           <MyCard
                             text={
@@ -202,7 +224,8 @@ const Detail = () => {
                                 : item.hierarchyEN
                             }
                             caption={Language === "zh" ? "级别" : "Hierarchy"}
-                            fontSize={isMdDown ? "h6" : "h4"}
+                            fontSize={myCardTextFontSize}
+                            width={"100%"}
                           />
                           <MyCard
                             text={
@@ -211,7 +234,8 @@ const Detail = () => {
                                 : item.materialEN
                             }
                             caption={Language === "zh" ? "材质" : "Material"}
-                            fontSize={isMdDown ? "h6" : "h4"}
+                            fontSize={myCardTextFontSize}
+                            width={"100%"}
                           />
                         </Box>
                       </Grid>
@@ -242,7 +266,7 @@ const Detail = () => {
                               : item.techniqueEN
                           }
                           caption={Language === "zh" ? "制造方法" : "Technique"}
-                          fontSize={isMdDown ? "h6" : "h4"}
+                          fontSize={myCardTextFontSize}
                         />
                       </Grid>
                       <Grid item xs={5} md={5}>
@@ -250,7 +274,7 @@ const Detail = () => {
                           text={
                             Language === "zh" ? item.category : item.categoryEN
                           }
-                          fontSize={isMdDown ? "h6" : "h4"}
+                          fontSize={myCardTextFontSize}
                           caption={Language === "zh" ? "类别" : "Category"}
                         />
                       </Grid>
@@ -258,21 +282,24 @@ const Detail = () => {
                         <MyCard
                           text={Language === "zh" ? item.site : item.siteEN}
                           caption={Language === "zh" ? "出土地点" : "Site"}
-                          fontSize={isMdDown ? "h6" : "h4"}
+                          fontSize={myCardTextFontSize}
                         />
                       </Grid>
                       <Grid item xs={7}>
-                        <MyCard
-                          text={
-                            Language === "zh" ? item.meaning : item.meaningEN
-                          }
-                          caption={
-                            Language === "zh"
-                              ? item.meaningLabel
-                              : item.meaningLableEN
-                          }
-                          fontSize={isMdDown ? "h6" : "h4"}
-                        />
+                        {item.meaning != "/" && (
+                          <MyCard
+                            text={
+                              Language === "zh" ? item.meaning : item.meaningEN
+                            }
+                            caption={
+                              Language === "zh"
+                                ? item.meaningLabel
+                                : item.meaningLableEN
+                            }
+                            fontSize={myCardTextFontSize}
+                          />
+                        )}
+                        {item.meaning == "/" && <MyCard />}
                       </Grid>
                     </Grid>
                   </Box>
