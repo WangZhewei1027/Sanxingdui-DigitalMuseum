@@ -129,7 +129,7 @@ export default function MyImageList({ results }) {
               }}
             >
               <Typography variant="h5" align="center">
-                No results
+                {Language === "en" ? "No results found" : "未找到结果"}
               </Typography>
             </Box>
           </Fade>

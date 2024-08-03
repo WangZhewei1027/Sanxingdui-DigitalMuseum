@@ -47,13 +47,24 @@ export default function Database() {
     if (searchTerms.length === 0) {
       setSearchResults(data);
     } else {
-      const results = data.filter((item) =>
-        searchTerms.some(
-          (term) =>
-            item.name.toLowerCase().includes(term.toLowerCase()) ||
-            item.material.toLowerCase().includes(term.toLowerCase())
-        )
-      );
+      let results = [];
+      if (Language === "zh") {
+        results = data.filter((item) =>
+          searchTerms.some(
+            (term) =>
+              item.name.toLowerCase().includes(term.toLowerCase()) ||
+              item.material.toLowerCase().includes(term.toLowerCase())
+          )
+        );
+      } else {
+        results = data.filter((item) =>
+          searchTerms.some(
+            (term) =>
+              item.nameEN.toLowerCase().includes(term.toLowerCase()) ||
+              item.materialEN.toLowerCase().includes(term.toLowerCase())
+          )
+        );
+      }
       setSearchResults(results);
     }
   };
