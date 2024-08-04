@@ -129,8 +129,8 @@ const Detail = () => {
                                 ? "h3"
                                 : "h2"
                               : isMdDown
-                              ? "h5"
-                              : "h4"
+                                ? "h5"
+                                : "h4"
                           }
                           align="center"
                           sx={{ fontWeight: "bold" }}
@@ -177,8 +177,8 @@ const Detail = () => {
                                 ? "h7"
                                 : "h6"
                               : isMdDown
-                              ? "h7"
-                              : "h7"
+                                ? "h7"
+                                : "h7"
                           }
                         >
                           {Language === "zh"

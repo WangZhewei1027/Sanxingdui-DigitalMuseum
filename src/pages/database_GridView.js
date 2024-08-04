@@ -19,6 +19,8 @@ export default function MyImageList({ results }) {
 
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
+  const isLgUp = useMediaQuery(theme.breakpoints.up("lg"));
+  const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
   const location = useLocation();
 
   const handleImageClick = (id) => {
@@ -53,7 +55,7 @@ export default function MyImageList({ results }) {
         {results.length > 0 ? (
           <ImageList
             variant="masonry"
-            cols={isMdUp ? 5 : 2}
+            cols={isLgUp ? 5 : isMdUp ? 4 : isSmUp ? 3 : 2}
             gap={20}
             sx={{ overflow: "hidden" }}
           >
