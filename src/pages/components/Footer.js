@@ -38,8 +38,8 @@ function Footer() {
         </Grid>
         <Grid item xs={12} md={3}>
           <img
-            src={require("../assets/nyush.png")}
-            height={"100px"}
+            src={require("../assets/nyush_white.png")}
+            height={"80px"}
           ></img>
         </Grid>
 
@@ -53,7 +53,7 @@ function Footer() {
               mb: 2,
             }}
           >
-            <Typography variant="h6" fontWeight="bold" style={{ marginBottom: "16px" }}>
+            <Typography variant="h6" fontWeight="bold" style={{ marginBottom: "4px" }}>
               {Language == "zh" ? "联系我们" : "Contact Us"}
             </Typography>
             <Box>
