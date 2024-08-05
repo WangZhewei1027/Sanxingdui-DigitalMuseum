@@ -127,20 +127,20 @@ function MyThree() {
 
       const fbxLoader = new FBXLoader();
 
-      const model = fbxLoader.load(
-        require("../assets/daliren.fbx"),
-        (object) => {
-          const scale = 0.01;
-          object.scale.set(scale, scale, scale);
-          object.position.set(-2.7, 1, 0);
-          scene.add(object);
-          object.traverse((child) => {
-            if (child.isMesh) {
-              child.material.map = bronzeTexture;
-            }
-          });
-        }
-      );
+      // const model = fbxLoader.load(
+      //   require("../assets/daliren.fbx"),
+      //   (object) => {
+      //     const scale = 0.01;
+      //     object.scale.set(scale, scale, scale);
+      //     object.position.set(-2.7, 1, 0);
+      //     scene.add(object);
+      //     object.traverse((child) => {
+      //       if (child.isMesh) {
+      //         child.material.map = bronzeTexture;
+      //       }
+      //     });
+      //   }
+      // );
 
       function resizeRendererToDisplaySize(renderer) {
         const canvas = renderer.domElement;

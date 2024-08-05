@@ -25,6 +25,8 @@ import Footer from "./components/Footer";
 import ui from "./assets/ui.json";
 import LanguageButton from "./components/Language";
 import { createContext } from "react";
+import Snackbar from "@mui/material/Snackbar";
+import CloseIcon from "@mui/icons-material/Close";
 
 export const LanguageContext = createContext(null);
 
@@ -36,6 +38,7 @@ const Layout = () => {
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   const [Language, setLanguage] = useState("en");
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (location.pathname.startsWith("/database/")) {
@@ -91,7 +94,33 @@ const Layout = () => {
 
   const handleLanguageChange = (Language) => {
     setLanguage(Language);
+    setOpen(true);
   };
+
+  const handleSnackBarClick = () => {
+    setOpen(true);
+  };
+
+  const handleSnackBarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleSnackBarClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
 
   return (
     <LanguageContext.Provider value={Language}>
@@ -216,6 +245,15 @@ const Layout = () => {
       <Box>
         <Outlet />
       </Box>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleSnackBarClose}
+        message={
+          Language == "zh" ? "语言已切换至中文" : "Language switched to English"
+        }
+        action={action}
+      />
       <Footer />
     </LanguageContext.Provider>
   );
