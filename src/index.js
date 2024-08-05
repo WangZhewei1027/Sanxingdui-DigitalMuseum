@@ -18,6 +18,7 @@ import theme from "./theme";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { CssBaseline } from "@mui/material";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 const router = createHashRouter([
   {
@@ -66,6 +67,8 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Analytics />
+      <SpeedInsights />
       <RouterProvider router={router} />
     </ThemeProvider>
   );
