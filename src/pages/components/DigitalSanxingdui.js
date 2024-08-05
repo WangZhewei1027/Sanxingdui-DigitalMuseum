@@ -6,7 +6,11 @@ function MyThree() {
   useEffect(() => {
     function main() {
       const canvas = document.querySelector("#threejs-canvas");
-      const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        canvas,
+        alpha: true,
+      });
 
       const fov = 75;
       const aspect = 2; // the canvas default
@@ -16,6 +20,7 @@ function MyThree() {
       camera.position.z = 2;
 
       const scene = new THREE.Scene();
+      scene.background = null;
 
       {
         const color = 0xffffff;

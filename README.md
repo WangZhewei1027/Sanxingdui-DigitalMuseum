@@ -5,7 +5,7 @@ NYUSH 2024 Summer DURF Project
 
 # Public Access
 
-**Offical Publish:** [https://www.sanxingdui.online/](https://www.sanxingdui.online/)
+**Official Publish:** [https://www.sanxingdui.online/](https://www.sanxingdui.online/)
 
 
 # About Us

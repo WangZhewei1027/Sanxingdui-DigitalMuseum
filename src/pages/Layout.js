@@ -27,6 +27,7 @@ import LanguageButton from "./components/Language";
 import { createContext } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import CloseIcon from "@mui/icons-material/Close";
+import { tab } from "@testing-library/user-event/dist/tab";
 
 export const LanguageContext = createContext(null);
 
@@ -254,7 +255,7 @@ const Layout = () => {
         }
         action={action}
       />
-      <Footer />
+      {tabValue !== 0 && <Footer />}
     </LanguageContext.Provider>
   );
 };
