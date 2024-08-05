@@ -17,6 +17,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import theme from "./theme";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { CssBaseline } from "@mui/material";
+import { Analytics } from "@vercel/analytics/react";
 
 const router = createHashRouter([
   {
