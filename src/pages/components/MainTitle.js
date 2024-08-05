@@ -8,7 +8,7 @@ import Roboto from "../assets/fonts/Roboto_Bold.json";
 import Anton from "../assets/fonts/Anton_Regular.json";
 import { FBXLoader } from "three/examples/jsm/Addons.js";
 
-function MyThree() {
+function MyThree({ ...props }) {
   const mousePositionRef = useRef({ x: 0, y: 0 });
   const rotationRef = useRef(0);
 
@@ -35,7 +35,7 @@ function MyThree() {
       const near = 0.1;
       const far = 5;
       const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-      camera.position.set(-3.5, 0, 2.8);
+      camera.position.set(-3.45, 0, 2);
 
       const scene = new THREE.Scene();
 
@@ -195,7 +195,12 @@ function MyThree() {
   return (
     <canvas
       id="threejs-canvas-02"
-      style={{ width: "100%", height: "100%", display: "block" }}
+      style={{
+        width: "100%",
+        display: "block",
+        position: "inherit",
+        ...props,
+      }}
       onPointerMove={handlePointerMove}
     ></canvas>
   );
