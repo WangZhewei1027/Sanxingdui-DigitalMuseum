@@ -103,45 +103,6 @@ function MyThree({ ...props }) {
       borderLine.position.copy(text.position); // Match the position of the text mesh
       scene.add(borderLine);
 
-      const bronzeTexture = new THREE.TextureLoader().load(
-        require("../assets/bronze-texture.jpg"),
-        function (texture) {
-          // in this example we create the material when the texture is loaded
-          const material = new THREE.MeshBasicMaterial({
-            map: texture,
-          });
-        },
-
-        // onProgress callback currently not supported
-        undefined,
-
-        // onError callback
-        function (err) {
-          console.error("An error happened.");
-        }
-      );
-      bronzeTexture.wrapS = THREE.RepeatWrapping;
-      bronzeTexture.wrapT = THREE.RepeatWrapping;
-      bronzeTexture.repeat.set(0.3, 0.3);
-      console.log(texture);
-
-      const fbxLoader = new FBXLoader();
-
-      // const model = fbxLoader.load(
-      //   require("../assets/daliren.fbx"),
-      //   (object) => {
-      //     const scale = 0.01;
-      //     object.scale.set(scale, scale, scale);
-      //     object.position.set(-2.7, 1, 0);
-      //     scene.add(object);
-      //     object.traverse((child) => {
-      //       if (child.isMesh) {
-      //         child.material.map = bronzeTexture;
-      //       }
-      //     });
-      //   }
-      // );
-
       function resizeRendererToDisplaySize(renderer) {
         const canvas = renderer.domElement;
         const width = canvas.clientWidth;
