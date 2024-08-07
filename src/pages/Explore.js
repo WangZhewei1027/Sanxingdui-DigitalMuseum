@@ -10,7 +10,7 @@ import Preface from "./components/Preface";
 import { css, keyframes } from "@emotion/react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const pics = [
   "00000071_青铜面具/main.JPG",
@@ -47,6 +47,10 @@ function ExplorePage() {
   const handleClick = (id) => {
     navigate(`/database/${id}`);
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
 
   return (
     <Box>

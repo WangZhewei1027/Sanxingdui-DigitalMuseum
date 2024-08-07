@@ -243,12 +243,12 @@ const Layout = () => {
           </List>
         </Box>
       </Drawer>
-      <Box>
-        <Outlet />
-      </Box>
+
+      <Outlet />
+
       <Snackbar
         open={open}
-        autoHideDuration={6000}
+        autoHideDuration={5000}
         onClose={handleSnackBarClose}
         message={
           Language == "zh" ? "语言已切换至中文" : "Language switched to English"

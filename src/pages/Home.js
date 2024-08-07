@@ -19,23 +19,34 @@ function Daliren() {
   const [imageIndex, setImageIndex] = useState(1);
 
   const theme = useTheme();
+  const isXlUp = useMediaQuery(theme.breakpoints.up("xl"));
   const isLgUp = useMediaQuery(theme.breakpoints.up("lg"));
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
 
+  const [imgs, setImgs] = useState([]);
+
   const myStyle = () => {
-    if (isLgUp) {
-      return { top: "-20%", left: "-10%", width: "120%" };
+    if (isXlUp) {
+      return { top: "-15rem", left: "-10%", width: "120%" };
+    } else if (isLgUp) {
+      return { top: "-13rem", left: "-10%", width: "120%" };
     } else if (isMdUp) {
-      return { top: "-20%", left: "-40%", width: "180%" };
+      return { top: "-10rem", left: "-40%", width: "180%" };
     } else if (isSmUp) {
-      return { top: "-20%", left: "-50%", width: "200%" };
+      return { top: "-8rem", left: "-50%", width: "200%" };
     } else {
-      return { top: "-15%", left: "-75%", width: "250%" };
+      return { top: "-3rem", left: "-75%", width: "250%" };
     }
   };
 
   useEffect(() => {
+    let imgs = [];
+    for (let i = 0; i < 6; i++) {
+      imgs.push(require(`./assets/objectsInHand/${i + 1}.webp`));
+    }
+    setImgs(imgs);
+
     const handleScroll = () => {
       // Get the scroll position
       const scrollTop =
@@ -45,7 +56,11 @@ function Daliren() {
       const newImageIndex = (Math.floor(scrollTop / 500) % 6) + 1;
 
       // Update the image index
-      setImageIndex(newImageIndex);
+      if (newImageIndex < 1 || newImageIndex > 6) {
+        setImageIndex(1);
+      } else {
+        setImageIndex(newImageIndex);
+      }
     };
 
     // Add the scroll event listener
@@ -58,9 +73,15 @@ function Daliren() {
   }, []);
 
   return (
-    <div style={{ position: "fixed", top: "64px", width: "100%" }}>
+    <div
+      style={{
+        position: "fixed",
+        top: "64px",
+        width: "100%",
+        zIndex: 10,
+      }}
+    >
       <div style={{ height: "100vh", position: "relative" }}>
-        {/* Part 1 */}
         <div
           id="canvas-container"
           style={{
@@ -82,7 +103,7 @@ function Daliren() {
         }}
       />
       <img
-        src={require(`./assets/objectsInHand/${imageIndex}.webp`)}
+        src={imgs[imageIndex - 1]}
         style={{
           position: "absolute",
           zIndex: 10,
@@ -106,20 +127,11 @@ function Daliren() {
 
 function HomePage() {
   const theme = useTheme();
-  const isLgUp = useMediaQuery(theme.breakpoints.up("lg"));
-  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
-  const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
     <React.Fragment>
       <Daliren />
-      <list
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          scrollBehavior: "smooth",
-        }}
-      >
+      <div style={{ display: "flex", flexDirection: "column" }}>
         {Array.from({ length: 14 }, (_, i) => (
           <img
             key={i + 1}
@@ -127,7 +139,7 @@ function HomePage() {
             width={"100%"}
           />
         ))}
-      </list>
+      </div>
     </React.Fragment>
   );
 }
