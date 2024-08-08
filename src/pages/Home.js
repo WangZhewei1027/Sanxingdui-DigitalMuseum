@@ -197,17 +197,17 @@ function Background() {
           index++;
         }
 
-        setImageCount(index);
+        setImageCount(index + 1);
       };
 
       calculateImageHeights();
 
-      // Recalculate heights if the window is resized
-      window.addEventListener("resize", calculateImageHeights);
+      // // Recalculate heights if the window is resized
+      // window.addEventListener("resize", calculateImageHeights);
 
-      return () => {
-        window.removeEventListener("resize", calculateImageHeights);
-      };
+      // return () => {
+      //   window.removeEventListener("resize", calculateImageHeights);
+      // };
     });
   }, []);
 
