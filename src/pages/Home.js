@@ -158,20 +158,62 @@ function Daliren() {
 
 function Background() {
   const [imageCount, setImageCount] = useState(0);
+  const containerRef = useRef(null);
+  const [ratios, setRatios] = useState([]);
 
   useEffect(() => {
-    // Calculate the total height of the document
-    const documentHeight = document.documentElement.scrollHeight;
-    const imageHeight = window.innerWidth; // Assuming each image's width is 100%, its height should be equal to its width (as per your style).
+    let imagePaths = [];
+    for (let i = 0; i < 14; i++) {
+      imagePaths.push(require(`./assets/outline_compressed/${i + 1}.webp`));
+    }
 
-    // Calculate how many images are needed to fill the document
-    const totalImages = Math.ceil(documentHeight / imageHeight);
+    // Create an array to store promises
+    const imagePromises = imagePaths.map((src) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+          // Calculate the ratio
+          const ratio = img.naturalWidth / img.naturalHeight;
+          resolve(ratio);
+        };
+      });
+    });
 
-    setImageCount(totalImages);
+    // Wait for all images to load and then set the ratios
+    Promise.all(imagePromises).then((ratios) => {
+      setRatios(ratios);
+
+      // Function to calculate the height of each image after it is loaded
+      const calculateImageHeights = () => {
+        // Calculate the total height of the document
+        const documentHeight = document.documentElement.scrollHeight;
+
+        let totalHeight = 0;
+        let index = 0;
+        while (totalHeight < documentHeight && index < ratios.length * 10) {
+          // Some reasonable upper bound
+          totalHeight += window.innerWidth / ratios[index % ratios.length];
+          index++;
+        }
+
+        setImageCount(index);
+      };
+
+      calculateImageHeights();
+
+      // Recalculate heights if the window is resized
+      window.addEventListener("resize", calculateImageHeights);
+
+      return () => {
+        window.removeEventListener("resize", calculateImageHeights);
+      };
+    });
   }, []);
 
   return (
     <div
+      ref={containerRef}
       style={{
         position: "absolute",
         top: "2rem",
@@ -186,6 +228,7 @@ function Background() {
           src={require(`./assets/outline_compressed/${(i % 14) + 1}.webp`)}
           style={{
             width: "100%",
+            objectFit: "cover", // Ensures images scale correctly
           }}
         />
       ))}
