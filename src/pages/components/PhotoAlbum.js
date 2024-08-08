@@ -1,21 +1,9 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const PhotoAlbum = ({ item }) => {
   const srcs = [];
-
-  if (item.luma !== "/") {
-    let content = (
-      <Box
-        component="iframe"
-        src={`${item.luma}?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false`}
-        title="luma embed"
-        sx={{ border: "none", borderRadius: 4, width: "100%", height: "100%" }}
-      ></Box>
-    );
-    srcs.push(content);
-  }
 
   // Load variant images if they exist
   let i = 1;
@@ -42,6 +30,18 @@ const PhotoAlbum = ({ item }) => {
     } catch (error) {
       break;
     }
+  }
+
+  if (item.luma !== "/") {
+    let content = (
+      <Box
+        component="iframe"
+        src={`${item.luma}?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false`}
+        title="luma embed"
+        sx={{ border: "none", borderRadius: 4, width: "100%", height: "100%" }}
+      ></Box>
+    );
+    srcs.push(content);
   }
 
   return (
@@ -77,6 +77,27 @@ const PhotoAlbum = ({ item }) => {
           {src}
         </Box>
       ))}
+      {/* {srcs.length === 0 && (
+        <Box
+          sx={{
+            position: "relative",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+            }}
+          >
+            <Typography variant="h5">No image available</Typography>
+          </Box>
+        </Box>
+      )} */}
     </Carousel>
   );
 };

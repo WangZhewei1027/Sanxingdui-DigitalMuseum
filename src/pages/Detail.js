@@ -244,7 +244,7 @@ const Detail = () => {
                         <Box
                           sx={{
                             width: "100%",
-                            height: { md: "100%", xs: "400px" },
+                            height: { md: "100%", xs: "70vh" },
                             position: "relative", // Ensure the Box is a positioned container
                             transition: "box-shadow 0.5s",
                             ...myStyle,
