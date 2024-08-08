@@ -1,5 +1,12 @@
 import React from "react";
+import MainTitle from "./components/MainTitle";
+import DigitalSanxingdui from "./components/DigitalSanxingdui";
+import { useEffect, useState, useRef } from "react";
 import {
+  useMediaQuery,
+  useTheme,
+  Fade,
+  Button,
   Container,
   Box,
   Typography,
@@ -7,13 +14,37 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Fab,
+  Stack,
 } from "@mui/material";
-import MainTitle from "./components/MainTitle";
-import zIndex from "@mui/material/styles/zIndex";
-import DigitalSanxingdui from "./components/DigitalSanxingdui";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { LanguageContext } from "./Layout";
+import PlayCircleOutlineOutlinedIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
+import { Language } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import KeyboardDoubleArrowDownOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowDownOutlined";
+
+function throttle(fn, limit) {
+  let lastFunc;
+  let lastRan;
+
+  return function () {
+    const context = this;
+    const args = arguments;
+
+    if (!lastRan) {
+      fn.apply(context, args);
+      lastRan = Date.now();
+    } else {
+      clearTimeout(lastFunc);
+      lastFunc = setTimeout(function () {
+        if (Date.now() - lastRan >= limit) {
+          fn.apply(context, args);
+          lastRan = Date.now();
+        }
+      }, limit - (Date.now() - lastRan));
+    }
+  };
+}
 
 function Daliren() {
   const [imageIndex, setImageIndex] = useState(1);
@@ -64,7 +95,7 @@ function Daliren() {
     };
 
     // Add the scroll event listener
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", throttle(handleScroll, 200));
 
     // Clean up the event listener when the component unmounts
     return () => {
@@ -125,21 +156,215 @@ function Daliren() {
   );
 }
 
+function Background() {
+  const [imageCount, setImageCount] = useState(0);
+
+  useEffect(() => {
+    // Calculate the total height of the document
+    const documentHeight = document.documentElement.scrollHeight;
+    const imageHeight = window.innerWidth; // Assuming each image's width is 100%, its height should be equal to its width (as per your style).
+
+    // Calculate how many images are needed to fill the document
+    const totalImages = Math.ceil(documentHeight / imageHeight);
+
+    setImageCount(totalImages);
+  }, []);
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: "2rem",
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+      }}
+    >
+      {Array.from({ length: imageCount }, (_, i) => (
+        <img
+          key={i + 1}
+          src={require(`./assets/outline_compressed/${(i % 14) + 1}.webp`)}
+          style={{
+            width: "100%",
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+function Keywords() {
+  const Language = React.useContext(LanguageContext);
+  const keywordsZH = [
+    "神秘",
+    "古老",
+    "独特",
+    "壮观",
+    "奇异",
+    "精美",
+    "神圣",
+    "历史悠久",
+    "莫测",
+    "宏伟",
+    "瑰丽",
+    "不朽",
+    "深邃",
+    "不可解",
+  ];
+  const keywordsEN = [
+    "Mysterious",
+    "Ancient",
+    "Unique",
+    "Magnificent",
+    "Eccentric",
+    "Exquisite",
+    "Sacred",
+    "Historic",
+    "Profound",
+    "Grand",
+    "Splendid",
+    "Immortal",
+    "Unfathomable",
+    "Inexplicable",
+  ];
+  let keywords = [];
+  if (Language === "zh") {
+    keywords = keywordsZH;
+  } else {
+    keywords = keywordsEN;
+  }
+
+  function Word({ content, position = "left", index }) {
+    const topController = `calc(10vh + ${index * 3}rem)`;
+    return (
+      <React.Fragment>
+        <div style={{ width: "100%", position: "sticky", top: "10rem" }}>
+          <Typography
+            variant={Language === "zh" ? "h3" : "h4"}
+            fontWeight="bold"
+            style={
+              position == "left"
+                ? {
+                    position: "absolute",
+                    left: "10vw",
+                    top: topController,
+                  }
+                : {
+                    position: "absolute",
+                    right: "10vw",
+                    top: topController,
+                  }
+            }
+          >
+            {content}
+          </Typography>
+        </div>
+        <div style={{ width: "100%", height: "40vh" }}></div>
+      </React.Fragment>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        position: "relative",
+        display: "block",
+        flexDirection: "column",
+        height: "100%",
+      }}
+    >
+      <div style={{ width: "100%", height: "100vh" }}></div>
+      {keywords.map((keyword, index) => (
+        <Word
+          key={index}
+          content={keyword}
+          index={index}
+          position={index % 2 == 0 ? "left" : "right"}
+        />
+      ))}
+      <div style={{ width: "100%", height: "50vh" }}></div>
+    </div>
+  );
+}
+
+function StartButton() {
+  const Language = React.useContext(LanguageContext);
+
+  const [isAtEndOfDocument, setIsAtEndOfDocument] = useState(false);
+
+  const checkIfAtEndOfDocument = () => {
+    const scrollPosition = window.innerHeight + window.pageYOffset;
+    const documentHeight = document.documentElement.scrollHeight;
+    setIsAtEndOfDocument(scrollPosition >= documentHeight - 10); // Adjust for a small buffer
+  };
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/database");
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", checkIfAtEndOfDocument);
+
+    return () => {
+      window.removeEventListener("scroll", checkIfAtEndOfDocument);
+    };
+  }, []);
+
+  return (
+    <>
+      {/* <Fade in={!isAtEndOfDocument} timeout={500}>
+        <div
+          style={{
+            position: "fixed",
+            bottom: "5%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 100,
+            boxShadow: 10,
+          }}
+        >
+          <KeyboardDoubleArrowDownOutlinedIcon />
+        </div>
+      </Fade> */}
+      <Fade in={isAtEndOfDocument} timeout={500}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            position: "fixed",
+            bottom: "5%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 100,
+            boxShadow: 15,
+          }}
+        >
+          <Button
+            variant="contained"
+            startIcon={<PlayCircleOutlineOutlinedIcon />}
+            onClick={handleClick}
+          >
+            <Typography variant="h6" fontWeight="bold">
+              {Language == "zh" ? "开始探索" : "Explore"}
+            </Typography>
+          </Button>
+        </Stack>
+      </Fade>
+    </>
+  );
+}
+
 function HomePage() {
   const theme = useTheme();
 
   return (
     <React.Fragment>
       <Daliren />
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        {Array.from({ length: 14 }, (_, i) => (
-          <img
-            key={i + 1}
-            src={require(`./assets/outline_compressed/${i + 1}.webp`)}
-            width={"100%"}
-          />
-        ))}
-      </div>
+      <Background />
+      <Keywords />
+      <StartButton />
     </React.Fragment>
   );
 }

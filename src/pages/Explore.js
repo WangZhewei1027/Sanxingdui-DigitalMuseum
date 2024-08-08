@@ -54,12 +54,62 @@ function ExplorePage() {
 
   return (
     <Box>
-      <div id="canvas-container" style={{ height: "100%" }}>
+      {/* <div id="canvas-container" style={{ height: "100%" }}>
         <DigitalSanxingdui />
-      </div>
+      </div> */}
       <div id="canvas-container" style={{ height: "100%" }}>
         <MainTitle />
       </div>
+      <Box
+        sx={{
+          backgroundColor: "rgb(23,23,23)",
+          display: "flex",
+          height: "650px",
+          alignItems: "center",
+
+          backgroundImage: `url(${require("./assets/opening2.jpg")})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <Container>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              margin: "16px",
+              animation: `${animateBottom} 1s ease-out forwards`,
+            }}
+          >
+            {/* Left */}
+            <Box
+              sx={{
+                flexGrow: 1,
+              }}
+            >
+              <Typography variant="body1">
+                三星堆遗址位于四川省广汉市<br></br>
+              </Typography>
+              <Typography variant="h2" gutterBottom sx={{ fontWeight: "bold" }}>
+                背景介绍
+              </Typography>
+              <Typography variant="body1">
+                是一个重要的青铜时代文化遗址<br></br>
+                发现于20世纪20年代经过多次发掘<br></br>
+                出土了大量珍贵的金器、青铜器、玉器等文物。
+              </Typography>
+            </Box>
+            {/* Right */}
+            <Box
+              sx={{
+                flexGrow: 1,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            ></Box>
+          </Box>
+        </Container>
+      </Box>
       <Container>
         <Typography align="center" variant="h2" fontWeight={"bold"} my={4}>
           精选文物
@@ -126,58 +176,8 @@ function ExplorePage() {
       </Container>
 
       {/* Part 2 */}
-      <Box
-        sx={{
-          backgroundColor: "rgb(23,23,23)",
-          display: "flex",
-          height: "650px",
-          alignItems: "center",
 
-          backgroundImage: `url(${require("./assets/opening2.jpg")})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <Container>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              margin: "16px",
-              animation: `${animateBottom} 1s ease-out forwards`,
-            }}
-          >
-            {/* Left */}
-            <Box
-              sx={{
-                flexGrow: 1,
-              }}
-            >
-              <Typography variant="body1">
-                三星堆遗址位于四川省广汉市<br></br>
-              </Typography>
-              <Typography variant="h2" gutterBottom sx={{ fontWeight: "bold" }}>
-                背景介绍
-              </Typography>
-              <Typography variant="body1">
-                是一个重要的青铜时代文化遗址<br></br>
-                发现于20世纪20年代经过多次发掘<br></br>
-                出土了大量珍贵的金器、青铜器、玉器等文物。
-              </Typography>
-            </Box>
-            {/* Right */}
-            <Box
-              sx={{
-                flexGrow: 1,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            ></Box>
-          </Box>
-        </Container>
-      </Box>
-
-      <Box
+      {/* <Box
         sx={{
           backgroundColor: "rgb(23,23,23)",
           display: "flex",
@@ -189,7 +189,7 @@ function ExplorePage() {
         }}
       >
         <Preface />
-      </Box>
+      </Box> */}
     </Box>
   );
 }
