@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 const PhotoAlbum = ({ item }) => {
   const srcs = [];

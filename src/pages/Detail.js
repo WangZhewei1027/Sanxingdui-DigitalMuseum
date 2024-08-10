@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import data from "./assets/data.json";
 import {
@@ -10,11 +10,8 @@ import {
   CardMedia,
   Box,
 } from "@mui/material";
-import { spacing } from "@mui/system";
-import { ScrollToTop } from "./components/ScrollToTop";
 import PhotoAlbum from "./components/PhotoAlbum";
 import { useTheme, useMediaQuery } from "@mui/material";
-import Footer from "./components/Footer";
 import { LanguageContext } from "./Layout";
 
 const myStyle = {
@@ -155,7 +152,7 @@ const Detail = () => {
 
                   <Card
                     sx={{
-                      display: item.dimension != "/" ? "flex" : "none",
+                      display: item.dimension !== "/" ? "flex" : "none",
                       alignItems: "center",
                       justifyContent: "center",
                       ...myStyle,
@@ -286,7 +283,7 @@ const Detail = () => {
                         />
                       </Grid>
                       <Grid item xs={7}>
-                        {item.meaning != "/" && (
+                        {item.meaning !== "/" && (
                           <MyCard
                             text={
                               Language === "zh" ? item.meaning : item.meaningEN
@@ -299,7 +296,7 @@ const Detail = () => {
                             fontSize={myCardTextFontSize}
                           />
                         )}
-                        {item.meaning == "/" && <MyCard />}
+                        {item.meaning === "/" && <MyCard />}
                       </Grid>
                     </Grid>
                   </Box>

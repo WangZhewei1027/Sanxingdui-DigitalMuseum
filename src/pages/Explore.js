@@ -1,13 +1,8 @@
 import React from "react";
 import { Box } from "@mui/material";
-import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-import DigitalSanxingdui from "./components/DigitalSanxingdui";
-import { Canvas } from "@react-three/fiber";
 import MainTitle from "./components/MainTitle";
-import Footer from "./components/Footer";
-import Preface from "./components/Preface";
-import { css, keyframes } from "@emotion/react";
+import { keyframes } from "@emotion/react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
@@ -156,6 +151,7 @@ function ExplorePage() {
                 onClick={() => handleClick(pic.substring(0, 8))}
               >
                 <img
+                  alt="pic"
                   src={require(`./assets/pics/${pic}`)}
                   key={pic}
                   position={"absolute"}

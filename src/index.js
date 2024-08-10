@@ -1,21 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./pages/Layout";
 import Home from "./pages/Home";
+import Layout from "./pages/Layout";
 import Explore from "./pages/Explore";
 import Database from "./pages/Database";
 import NoPage from "./pages/NoPage";
 import Detail from "./pages/Detail";
-import {
-  createBrowserRouter,
-  createHashRouter,
-  RouterProvider,
-  HashRouter,
-} from "react-router-dom";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { createHashRouter, RouterProvider, } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
-import GlobalStyles from "@mui/material/GlobalStyles";
 import { CssBaseline } from "@mui/material";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react"
@@ -52,16 +45,6 @@ const router = createHashRouter([
     ],
   },
 ]);
-
-const globalStyles = (
-  <GlobalStyles
-    styles={{
-      body: {
-        backgroundColor: theme.palette.background.default,
-      },
-    }}
-  />
-);
 
 export default function App() {
   return (

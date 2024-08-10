@@ -1,27 +1,17 @@
 import React from "react";
 import MainTitle from "./components/MainTitle";
-import DigitalSanxingdui from "./components/DigitalSanxingdui";
 import { useEffect, useState, useRef } from "react";
 import {
   useMediaQuery,
   useTheme,
   Fade,
   Button,
-  Container,
-  Box,
   Typography,
-  Grid,
-  Card,
-  CardContent,
-  CardMedia,
-  Fab,
   Stack,
 } from "@mui/material";
 import { LanguageContext } from "./Layout";
 import PlayCircleOutlineOutlinedIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
-import { Language } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import KeyboardDoubleArrowDownOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowDownOutlined";
 
 function throttle(fn, limit) {
   let lastFunc;
@@ -124,6 +114,7 @@ function Daliren() {
         </div>
       </div>
       <img
+        alt="daliren"
         src={require("./assets/daliren.webp")}
         style={{
           position: "absolute",
@@ -134,6 +125,7 @@ function Daliren() {
         }}
       />
       <img
+        alt="object"
         src={imgs[imageIndex - 1]}
         style={{
           position: "absolute",
@@ -144,6 +136,7 @@ function Daliren() {
         }}
       />
       <img
+        alt="hand"
         src={require("./assets/objectsInHand/hand.webp")}
         style={{
           position: "absolute",
@@ -224,6 +217,7 @@ function Background() {
     >
       {Array.from({ length: imageCount }, (_, i) => (
         <img
+          alt="outline"
           key={i + 1}
           src={require(`./assets/outline_compressed/${(i % 14) + 1}.webp`)}
           style={{
@@ -286,7 +280,7 @@ function Keywords() {
             variant={Language === "zh" ? "h3" : "h4"}
             fontWeight="bold"
             style={
-              position == "left"
+              position === "left"
                 ? {
                     position: "absolute",
                     left: "10vw",
@@ -322,7 +316,7 @@ function Keywords() {
           key={index}
           content={keyword}
           index={index}
-          position={index % 2 == 0 ? "left" : "right"}
+          position={index % 2 === 0 ? "left" : "right"}
         />
       ))}
       <div style={{ width: "100%", height: "50vh" }}></div>
@@ -390,7 +384,7 @@ function StartButton() {
             onClick={handleClick}
           >
             <Typography variant="h6" fontWeight="bold">
-              {Language == "zh" ? "开始探索" : "Explore"}
+              {Language === "zh" ? "开始探索" : "Explore"}
             </Typography>
           </Button>
         </Stack>
@@ -400,8 +394,6 @@ function StartButton() {
 }
 
 function HomePage() {
-  const theme = useTheme();
-
   return (
     <React.Fragment>
       <Daliren />

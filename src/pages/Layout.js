@@ -27,7 +27,6 @@ import LanguageButton from "./components/Language";
 import { createContext } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import CloseIcon from "@mui/icons-material/Close";
-import { tab } from "@testing-library/user-event/dist/tab";
 
 export const LanguageContext = createContext(null);
 
@@ -45,7 +44,7 @@ const Layout = () => {
   useEffect(() => {
     if (allowSetLanguage) {
       let userLang = navigator.language || navigator.userLanguage;
-      if (userLang == "zh-CN") {
+      if (userLang === "zh-CN") {
         setLanguage("zh");
       } else {
         setLanguage("en");
@@ -106,10 +105,6 @@ const Layout = () => {
 
   const handleLanguageChange = (Language) => {
     setLanguage(Language);
-    setOpen(true);
-  };
-
-  const handleSnackBarClick = () => {
     setOpen(true);
   };
 
@@ -262,7 +257,9 @@ const Layout = () => {
         autoHideDuration={2000}
         onClose={handleSnackBarClose}
         message={
-          Language == "zh" ? "语言已切换至中文" : "Language switched to English"
+          Language === "zh"
+            ? "语言已切换至中文"
+            : "Language switched to English"
         }
         action={action}
       />
