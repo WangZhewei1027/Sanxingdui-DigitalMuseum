@@ -47,6 +47,16 @@ function ExplorePage() {
       >
         <img alt="rim" src="/assets/explore_page/rim.webp" width={"100%"}></img>
         <img
+          alt="ray"
+          src="/assets/explore_page/ray.webp"
+          width={"100%"}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }}
+        ></img>
+        <img
           alt="sun wheel"
           src="/assets/explore_page/sunWheel.webp"
           width={"100%"}
