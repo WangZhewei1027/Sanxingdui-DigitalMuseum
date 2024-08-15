@@ -1,6 +1,6 @@
 import React from "react";
 import MainTitle from "./components/MainTitle";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import {
   useMediaQuery,
   useTheme,
