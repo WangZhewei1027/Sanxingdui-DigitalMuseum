@@ -39,19 +39,17 @@ const Layout = () => {
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   const [Language, setLanguage] = useState("en");
   const [open, setOpen] = useState(false);
-  const [allowSetLanguage, setAllowSetLanguage] = useState(true);
 
   useEffect(() => {
-    if (allowSetLanguage) {
-      let userLang = navigator.language || navigator.userLanguage;
-      if (userLang === "zh-CN") {
-        setLanguage("zh");
-      } else {
-        setLanguage("en");
-      }
-      setAllowSetLanguage(false);
+    let userLang = navigator.language || navigator.userLanguage;
+    if (userLang === "zh-CN") {
+      setLanguage("zh");
+    } else {
+      setLanguage("en");
     }
+  }, []);
 
+  useEffect(() => {
     if (location.pathname.startsWith("/database/")) {
       setTabValue(2);
     } else {

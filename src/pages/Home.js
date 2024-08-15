@@ -150,63 +150,17 @@ function Daliren() {
 }
 
 function Background() {
-  const [imageCount, setImageCount] = useState(0);
-  const containerRef = useRef(null);
-  const [ratios, setRatios] = useState([]);
+  const imageCount = 14;
 
   useEffect(() => {
     let imagePaths = [];
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i < imageCount; i++) {
       imagePaths.push(require(`./assets/outline_compressed/${i + 1}.webp`));
     }
-
-    // Create an array to store promises
-    const imagePromises = imagePaths.map((src) => {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.src = src;
-        img.onload = () => {
-          // Calculate the ratio
-          const ratio = img.naturalWidth / img.naturalHeight;
-          resolve(ratio);
-        };
-      });
-    });
-
-    // Wait for all images to load and then set the ratios
-    Promise.all(imagePromises).then((ratios) => {
-      setRatios(ratios);
-
-      // Function to calculate the height of each image after it is loaded
-      const calculateImageHeights = () => {
-        // Calculate the total height of the document
-        const documentHeight = document.documentElement.scrollHeight;
-
-        let totalHeight = 0;
-        let index = 0;
-        while (totalHeight < documentHeight && index < ratios.length * 10) {
-          // Some reasonable upper bound
-          totalHeight += window.innerWidth / ratios[index % ratios.length];
-          index++;
-        }
-
-        setImageCount(index + 1);
-      };
-
-      calculateImageHeights();
-
-      // // Recalculate heights if the window is resized
-      // window.addEventListener("resize", calculateImageHeights);
-
-      // return () => {
-      //   window.removeEventListener("resize", calculateImageHeights);
-      // };
-    });
   }, []);
 
   return (
     <div
-      ref={containerRef}
       style={{
         position: "absolute",
         top: "2rem",
@@ -222,104 +176,10 @@ function Background() {
           src={require(`./assets/outline_compressed/${(i % 14) + 1}.webp`)}
           style={{
             width: "100%",
-            objectFit: "cover", // Ensures images scale correctly
+            objectFit: "cover",
           }}
         />
       ))}
-    </div>
-  );
-}
-
-function Keywords() {
-  const Language = React.useContext(LanguageContext);
-  const keywordsZH = [
-    "神秘",
-    "古老",
-    "独特",
-    "壮观",
-    "奇异",
-    "精美",
-    "神圣",
-    "历史悠久",
-    "莫测",
-    "宏伟",
-    "瑰丽",
-    "不朽",
-    "深邃",
-    "不可解",
-  ];
-  const keywordsEN = [
-    "Mysterious",
-    "Ancient",
-    "Unique",
-    "Magnificent",
-    "Eccentric",
-    "Exquisite",
-    "Sacred",
-    "Historic",
-    "Profound",
-    "Grand",
-    "Splendid",
-    "Immortal",
-    "Unfathomable",
-    "Inexplicable",
-  ];
-  let keywords = [];
-  if (Language === "zh") {
-    keywords = keywordsZH;
-  } else {
-    keywords = keywordsEN;
-  }
-
-  function Word({ content, position = "left", index }) {
-    const topController = `calc(10vh + ${index * 3}rem)`;
-    return (
-      <React.Fragment>
-        <div style={{ width: "100%", position: "sticky", top: "10rem" }}>
-          <Typography
-            variant={Language === "zh" ? "h3" : "h4"}
-            fontWeight="bold"
-            style={
-              position === "left"
-                ? {
-                    position: "absolute",
-                    left: "10vw",
-                    top: topController,
-                  }
-                : {
-                    position: "absolute",
-                    right: "10vw",
-                    top: topController,
-                  }
-            }
-          >
-            {content}
-          </Typography>
-        </div>
-        <div style={{ width: "100%", height: "40vh" }}></div>
-      </React.Fragment>
-    );
-  }
-
-  return (
-    <div
-      style={{
-        position: "relative",
-        display: "block",
-        flexDirection: "column",
-        height: "100%",
-      }}
-    >
-      <div style={{ width: "100%", height: "100vh" }}></div>
-      {keywords.map((keyword, index) => (
-        <Word
-          key={index}
-          content={keyword}
-          index={index}
-          position={index % 2 === 0 ? "left" : "right"}
-        />
-      ))}
-      <div style={{ width: "100%", height: "50vh" }}></div>
     </div>
   );
 }
@@ -398,7 +258,6 @@ function HomePage() {
     <React.Fragment>
       <Daliren />
       <Background />
-      <Keywords />
       <StartButton />
     </React.Fragment>
   );

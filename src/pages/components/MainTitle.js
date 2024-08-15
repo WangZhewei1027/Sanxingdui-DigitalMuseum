@@ -2,20 +2,17 @@ import * as THREE from "three";
 import { useEffect, useRef } from "react";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
-import { MeshBasicMaterial } from "three";
-import { OrbitControls } from "three/examples/jsm/Addons.js";
 import Roboto from "../assets/fonts/Roboto_Bold.json";
 import Anton from "../assets/fonts/Anton_Regular.json";
-import { FBXLoader } from "three/examples/jsm/Addons.js";
 
 function MyThree({ ...props }) {
   const mousePositionRef = useRef({ x: 0, y: 0 });
   const rotationRef = useRef(0);
 
-  const handlePointerMove = (event) => {
-    mousePositionRef.current = { x: event.clientX, y: event.clientY };
-    //console.log("Mouse Position:", event.clientX, event.clientY);
-  };
+  // const handlePointerMove = (event) => {
+  //   mousePositionRef.current = { x: event.clientX, y: event.clientY };
+  //   //console.log("Mouse Position:", event.clientX, event.clientY);
+  // };
 
   function lerp(start, end, t) {
     return start + t * (end - start);
@@ -52,12 +49,6 @@ function MyThree({ ...props }) {
 
       const texture = new THREE.TextureLoader().load(
         require("../assets/gold-texture.jpg"),
-        function (texture) {
-          // in this example we create the material when the texture is loaded
-          const material = new THREE.MeshBasicMaterial({
-            map: texture,
-          });
-        },
 
         // onProgress callback currently not supported
         undefined,
@@ -132,16 +123,6 @@ function MyThree({ ...props }) {
         light.position.x = lerp(-2, 6, Math.sin(time * 0.5));
         //console.log("Light position x: " + light.position.x);
 
-        let limit = 0.04;
-        let targetRotation = lerp(
-          -limit,
-          limit,
-          mousePositionRef.current.x / window.innerWidth
-        );
-        rotationRef.current = lerp(rotationRef.current, targetRotation, 0.01);
-        text.rotation.set(0, rotationRef.current, 0);
-        borderLine.rotation.set(0, rotationRef.current, 0);
-
         renderer.render(scene, camera);
 
         requestAnimationFrame(render);
@@ -162,7 +143,6 @@ function MyThree({ ...props }) {
         position: "inherit",
         ...props,
       }}
-      onPointerMove={handlePointerMove}
     ></canvas>
   );
 }
