@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import MainTitle from "./components/MainTitle";
 import { useEffect, useState } from "react";
 import {
@@ -211,20 +211,6 @@ function StartButton() {
 
   return (
     <>
-      {/* <Fade in={!isAtEndOfDocument} timeout={500}>
-        <div
-          style={{
-            position: "fixed",
-            bottom: "5%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            zIndex: 100,
-            boxShadow: 10,
-          }}
-        >
-          <KeyboardDoubleArrowDownOutlinedIcon />
-        </div>
-      </Fade> */}
       <Fade in={isAtEndOfDocument} timeout={500}>
         <Stack
           direction="row"
@@ -253,12 +239,37 @@ function StartButton() {
   );
 }
 
+function Loading() {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        zIndex: 1000,
+      }}
+    >
+      <Typography variant="h3" color="white">
+        Loading...
+      </Typography>
+    </div>
+  );
+}
+
 function HomePage() {
   return (
     <React.Fragment>
-      <Daliren />
-      <Background />
-      <StartButton />
+      <Suspense fallback={Loading}>
+        <Daliren />
+        <Background />
+        <StartButton />
+      </Suspense>
     </React.Fragment>
   );
 }

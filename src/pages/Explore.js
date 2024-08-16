@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
+import { LanguageContext } from "./Layout";
 
 const pics = [
   "00000071_青铜面具/main.JPG",
@@ -26,6 +27,8 @@ function ExplorePage() {
   const [selectedIndex, setSelectedIndex] = useState(1);
 
   const navigate = useNavigate();
+
+  const Language = React.useContext(LanguageContext);
 
   const handleClick = (id) => {
     navigate(`/database/${id}`);
@@ -70,16 +73,24 @@ function ExplorePage() {
         <Box
           style={{
             position: "absolute",
-            top: 16,
-            left: 16,
+            top: "5%",
+            left: "5%",
             borderBottom: "1px solid #F2ECDD",
             paddingBottom: "8px",
           }}
         >
-          <Typography variant="h5" fontWeight="bold">
-            LEARN ABOUT <br />
-            SANXINGDUI ARCHEOLOGIC SITE
-          </Typography>
+          {Language === "en" && (
+            <Typography variant="h5" fontWeight="bold">
+              LEARN ABOUT <br />
+              SANXINGDUI ARCHEOLOGIC SITE
+            </Typography>
+          )}
+          {Language === "zh" && (
+            <Typography variant="h4" fontWeight="bold">
+              了解关于 <br />
+              三星堆考古遗址
+            </Typography>
+          )}
         </Box>
       </Box>
 
