@@ -154,7 +154,7 @@ const Layout = () => {
               style={{ cursor: "pointer" }}
             >
               <img
-                src="https://industry.map.qq.com/cloud/sanxingdui/pc/home/header-logo.png?imageMogr2/format/webp/ignore-error/1"
+                src="favicon.ico"
                 alt="Logo"
                 style={{ maxHeight: "40px", width: "auto" }}
               />
@@ -162,7 +162,7 @@ const Layout = () => {
           )}
           {!isMdUp && (
             <img
-              src="https://industry.map.qq.com/cloud/sanxingdui/pc/home/header-logo.png?imageMogr2/format/webp/ignore-error/1"
+              src="favicon.ico"
               alt="Logo"
               style={{
                 maxHeight: "40px",
