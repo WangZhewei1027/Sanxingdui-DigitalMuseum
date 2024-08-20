@@ -63,7 +63,7 @@ function Daliren() {
 
   useEffect(() => {
     let imgs = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 1; i < 6; i++) {
       imgs.push(require(`./assets/objectsInHand/${i + 1}.webp`));
     }
     setImgs(imgs);
@@ -74,7 +74,7 @@ function Daliren() {
         window.pageYOffset || document.documentElement.scrollTop;
 
       // Calculate which image to show based on scroll position
-      const newImageIndex = (Math.floor(scrollTop / 500) % 6) + 1;
+      const newImageIndex = (Math.floor(scrollTop / 500) % 5) + 1;
 
       // Update the image index
       if (newImageIndex < 1 || newImageIndex > 6) {
